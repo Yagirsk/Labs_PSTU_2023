@@ -1,5 +1,4 @@
 #include <iostream>
-#include <locale.h>
 using namespace std;
 int main()
 {
@@ -7,8 +6,7 @@ int main()
 	cin >> n;
 	if (n <= 3 || n % 2 == 0)
 	{
-		setlocale(LC_ALL, "Russian");
-		cout << "÷ìñëî íå ñîîòâåòñâóåò òðåáîâàíèÿì" << endl;
+		cout << "Ã·Ã¬Ã±Ã«Ã® Ã­Ã¥ Ã±Ã®Ã®Ã²Ã¢Ã¥Ã²Ã±Ã¢Ã³Ã¥Ã² Ã²Ã°Ã¥Ã¡Ã®Ã¢Ã Ã­Ã¨Ã¿Ã¬" << endl;
 	}
 	else 
 	{
