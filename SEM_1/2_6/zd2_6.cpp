@@ -8,7 +8,7 @@ int main()
 	if (n <= 2)
 	{
 		setlocale(LC_ALL, "Russian");
-		cout << "чмсло не соответсвует требованиям" << endl;
+		cout << "число не соответсвует требованиям" << endl;
 	}
 	else
 	{
