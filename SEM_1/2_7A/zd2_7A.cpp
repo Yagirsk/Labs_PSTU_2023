@@ -20,7 +20,7 @@ int main()
 	else
 	{
 		setlocale(LC_ALL, "Russian");
-		cout << "чмсло не соответсвует требованиям" << endl;
+		cout << "число не соответсвует требованиям" << endl;
 	}
 	return 0;
 }
