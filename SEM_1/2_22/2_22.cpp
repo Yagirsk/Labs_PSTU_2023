@@ -13,7 +13,7 @@ int main()
 		if (a >= max)
 		{
 			max = a;
-			num + i;
+			num = i;
 		}
 	}
 	cout << max << endl << num << endl;
