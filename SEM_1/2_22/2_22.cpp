@@ -4,7 +4,7 @@ using namespace std;
 int main()
 {
 	float a;
-	int n;
+	int n, num = 1;
 	float max = -1;
 	cin >> n;
 	for (int i = 1; i <= n; i++)
@@ -13,8 +13,9 @@ int main()
 		if (a >= max)
 		{
 			max = a;
+			num + i;
 		}
 	}
-	cout << max << endl;
+	cout << max << endl << num << endl;
 	return 0;
 }
