@@ -1,30 +1,33 @@
 # 1) Задание
 **Рекурсия** 
 
-Посчитать числа Фибонначи до n-ого элемента.
+Решить задачу на Ханойские башни
 
 # 2) Код программы
 
 ```cpp
-﻿#include <iostream>
+#include <iostream>
 using namespace std;
-int foo(int n)
+void TOH(int n, char A, char B, char C)
 {
-    if (n <= 1)
-    {
-        return n;
+    if (n == 1) {
+        cout << "Перенести диск " << n << " с штыря " << A << " на штырь " << C << endl;
+        return;
     }
-    return foo(n - 1) + foo(n - 2);
+    TOH(n - 1, A, C, B);
+    cout << "Перенести диск " << n << " с штыря " << A << " на штырь " << C << endl;
+    TOH(n - 1, B, A, C);
 }
 int main()
 {
-    int k;
-    cin >> k;
-    for (int i = 0; i < k; i++)
-    {
-        int a = foo(i);
-        cout << a << " ";
-    }
+    setlocale(LC_ALL, "ru_RU");
+    cout << "Введите количество колец\n";
+    int n;
+    cin >> n;
+    cout << "Штырь А - штырь на котором находятся кольца вначале\n";
+    cout << "Штырь В - промежуточный штырь\n";
+    cout << "Штырь С - штырь на который надо перенести кольца\n";
+    TOH(n, 'A', 'B', 'C');
     return 0;
 }
 ```
@@ -33,6 +36,6 @@ int main()
 coming soon
   
 # 4) Тесты
-<image src ="test1_fib.png">
+<image src ="test1_hanoi.png">
 
-<image src ="test2_fib.png">
+<image src ="test2_hanoi.png">
