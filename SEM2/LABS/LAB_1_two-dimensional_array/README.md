@@ -56,7 +56,7 @@ int main()
 # 4) Тесты
 <image src ="test1_lab1_TDA.png">
 
-<image src ="test1_lab1_TDA.png">
+<image src ="test2_lab1_TDA.png">
 
-<image src ="test1_lab1_TDA.png">
+<image src ="test3_lab1_TDA.png">
 
