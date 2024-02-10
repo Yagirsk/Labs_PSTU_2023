@@ -67,8 +67,12 @@ int main()
 }
 ```
 
-# 3) Блок схема
-<image src ="lab5ss.drawio.png">
+# 3) Блок схемы
+функция main
+<image src ="lab5p2.drawio.png">
+
+Функция chek
+<image src ="lab5p2.drawio.png">
 
 # 4) Тесты
 <image src ="test1_lab5.png">
