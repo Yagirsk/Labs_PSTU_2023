@@ -1,31 +1,41 @@
 # 1) Задание
 **Рекурсия** 
 
-Посчитать числа Фибонначи до n-ого элемента.
+Посчитать cумму элементов ряда.
 
 # 2) Код программы
 
 ```cpp
-﻿#include <iostream>
+#include <iostream>
+#define _USE_MATH_DEFINES
 using namespace std;
-int foo(int n)
+double pi = atan(1) * 4;
+int tp = 1;
+double factorial(int a)
 {
-    if (n <= 1)
-    {
-        return n;
-    }
-    return foo(n - 1) + foo(n - 2);
+	int k = 1;
+	for (int i = 1; i <= a; i++)
+	{
+		k *= i;
+	}
+	return k;
+}
+double foo(int a, int n, int x)
+{
+	if (a == n+1)
+	{
+		return 0;
+	}
+	double el = (cos(a * ( pi / 4)) / factorial(a)) * pow(x, a) + foo(a+1, n, x);
+	return el;
 }
 int main()
 {
-    int k;
-    cin >> k;
-    for (int i = 0; i < k; i++)
-    {
-        int a = foo(i);
-        cout << a << " ";
-    }
-    return 0;
+	int a = 0;
+	int n, x;
+	cin >> n >> x;
+	cout << foo(a, n, x) << endl;
+	return 0;
 }
 ```
 
