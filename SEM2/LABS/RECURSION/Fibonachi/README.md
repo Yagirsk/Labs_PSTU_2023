@@ -1,79 +1,31 @@
 # 1) Задание
 **Рекурсия** 
 
-На стандартной шахматной доске 8х8 необходимо разместить 8 ферзей так, чтобы ни один из них не был под ударом другого.
-Ферзь бьет все клетки по вертикалям, горизонталям и обеим диагоналям.
-Первый ферзь ставится случайно.
+Посчитать числа Фибонначи до n-ого элемента.
 
 # 2) Код программы
 
 ```cpp
-#include <iostream>
+﻿#include <iostream>
 using namespace std;
-const int SIZE = 8;
-int board[SIZE][SIZE];
-bool t = 1;
-void showBoard()
+int foo(int n)
 {
-    for (int a = 0; a < 8; a++)
+    if (n <= 1)
     {
-        for (int b = 0; b < 8; b++)
-        {
-            cout << ((board[a][b]) ? "Q " : ". ");
-        }
-        cout << endl;
+        return n;
     }
-}
-bool chekQueen(int a, int b)
-{
-    for (int i = 0; i < a; i++)
-    {
-        if (board[i][b] == 1)
-        {
-            return false;
-        }
-    }
-    for (int i = 1; i <= a && b - i >= 0; i++)
-    {
-        if (board[a - i][b - i] == 1)
-        {
-            return false;
-        }
-    }
-    for (int i = 1; i <= a && b + i < SIZE; i++)
-    {
-        if (board[a - i][b + i] == 1)
-        {
-            return false;
-        }
-    }
-    return true;
-}
-void setQueen(int a)
-{
-    if (a == 8 && t == 1)
-    {
-        showBoard();
-        t = 0;
-        return;
-    }
-    for (int i = 0; i < 8; i++)
-    {
-        if (chekQueen(a, i))
-        {
-            board[a][i] = 1;
-            setQueen(a + 1);
-            board[a][i] = 0;
-        }
-    }
-    return;
+    return foo(n - 1) + foo(n - 2);
 }
 int main()
 {
-    cout << "Q - queen" << endl << ". - empty field cell" << endl;
-    setQueen(0);
+    int k;
+    cin >> k;
+    for (int i = 0; i < k; i++)
+    {
+        int a = foo(i);
+        cout << a << " ";
+    }
     return 0;
-}
 }
 ```
 
