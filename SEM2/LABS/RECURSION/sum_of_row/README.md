@@ -1,5 +1,6 @@
 # 1) Задание
 **Рекурсия** 
+
 Лабораторная работа. Вариант 6
 Посчитать cумму элементов ряда.
 
@@ -45,6 +46,6 @@ int main()
 coming soon
   
 # 4) Тесты
-<image src ="test1_fib.png">
+<image src ="test1_SoR.png">
 
-<image src ="test2_fib.png">
+<image src ="test2_SoR.png">
