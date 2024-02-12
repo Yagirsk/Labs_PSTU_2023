@@ -31,9 +31,11 @@ int main()
 
 # 3) Блок схема
 Функция main
+
 <image src ="FIBmain.drawio.png">
 
 Функция foo
+
 <image src ="FIBfoo.drawio.png">
 
   
