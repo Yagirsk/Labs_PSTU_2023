@@ -30,7 +30,10 @@ int main()
 ```
 
 # 3) Блок схема
-coming soon
+<image src ="">
+
+<image src ="test1_fib.png">
+
   
 # 4) Тесты
 <image src ="test1_fib.png">
