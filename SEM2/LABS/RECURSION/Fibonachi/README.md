@@ -30,9 +30,11 @@ int main()
 ```
 
 # 3) Блок схема
-<image src ="">
+Функция main
+<image src ="FIBmain.drawio.png">
 
-<image src ="test1_fib.png">
+Функция foo
+<image src ="FIBfoo.drawio.png">
 
   
 # 4) Тесты
