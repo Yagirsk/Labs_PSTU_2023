@@ -8,16 +8,17 @@
 # 2) Код программы
 
 ```cpp
-#include <iostream>
+﻿#include <iostream>
 using namespace std;
 const int SIZE = 8;
 int board[SIZE][SIZE];
 bool t = 1;
+int resultN = 1;
 void showBoard()
 {
-    for (int a = 0; a < 8; a++)
+    for (int a = 0; a < SIZE; a++)
     {
-        for (int b = 0; b < 8; b++)
+        for (int b = 0; b < SIZE; b++)
         {
             cout << ((board[a][b]) ? "Q " : ". ");
         }
@@ -51,10 +52,10 @@ bool chekQueen(int a, int b)
 }
 void setQueen(int a)
 {
-    if (a == 8 && t == 1)
+    if (a == SIZE)
     {
         showBoard();
-        t = 0;
+        cout << "Результат номер " << resultN++ << endl << endl;
         return;
     }
     for (int i = 0; i < 8; i++)
@@ -70,10 +71,10 @@ void setQueen(int a)
 }
 int main()
 {
-    cout << "Q - queen" << endl << ". - empty field cell" << endl;
+    setlocale(LC_ALL, "ru_RU");
+    cout << "Q - queen" << endl << ". - empty field cell" << endl << endl;
     setQueen(0);
     return 0;
-}
 }
 ```
 
