@@ -10,7 +10,8 @@
 using namespace std;
 void TOH(int n, char A, char B, char C)
 {
-    if (n == 1) {
+    if (n == 1)
+    {
         cout << "Перенести диск " << n << " с штыря " << A << " на штырь " << C << endl;
         return;
     }
