@@ -61,7 +61,7 @@ void setQueen(int a)
 int main()
 {
     setlocale(LC_ALL, "ru_RU");
-    cout << "Q - queen" << endl << ". - empty field cell" << endl << endl;
+    cout << "Q - queen" << endl << ". - пустая клетка поля" << endl << endl;
     setQueen(0);
     return 0;
 }
