@@ -47,7 +47,7 @@ void setQueen(int a)
         cout << "Результат номер " << resultN++ << endl << endl;
         return;
     }
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < SIZE; i++)
     {
         if (chekQueen(a, i))
         {
