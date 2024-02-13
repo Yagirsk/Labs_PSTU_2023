@@ -78,7 +78,15 @@ int main()
 ```
 
 # 3) Блок схема
-coming soon
+
+функция main
+<image src ="ferMAIN.drawio.png">
+
+функций showBoard
+<image src ="ferSB.drawio.png">
+
+Функция chekQueen
+<image src ="ferCQ.drawio.png">
   
 # 4) Тесты
 <image src ="testPART1_ferz.png">
