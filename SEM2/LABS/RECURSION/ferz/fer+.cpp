@@ -2,7 +2,6 @@
 using namespace std;
 const int SIZE = 8;
 int board[SIZE][SIZE];
-bool t = 1;
 int resultN = 1;
 void showBoard()
 {
