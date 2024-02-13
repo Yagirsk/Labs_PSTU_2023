@@ -83,6 +83,10 @@ int main()
 
 <image src ="ferMAIN.drawio.png">
 
+функция setQueen
+
+<image src ="ferSQ.drawio.png">
+
 функций showBoard
 
 <image src ="ferSB.drawio.png">
