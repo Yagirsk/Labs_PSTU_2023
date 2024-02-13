@@ -71,7 +71,7 @@ void setQueen(int a)
 int main()
 {
     setlocale(LC_ALL, "ru_RU");
-    cout << "Q - queen" << endl << ". - empty field cell" << endl << endl;
+    cout << "Q - queen" << endl << ". - пустая клетка поля" << endl << endl;
     setQueen(0);
     return 0;
 }
@@ -81,4 +81,8 @@ int main()
 coming soon
   
 # 4) Тесты
-<image src ="test_8queen.png">
+<image src ="testPART1_ferz.png">
+    
+<image src ="testPART2_ferz.png">
+
+<image src ="testPART3_ferz.png">
