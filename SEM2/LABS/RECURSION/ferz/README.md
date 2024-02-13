@@ -80,12 +80,15 @@ int main()
 # 3) Блок схема
 
 функция main
+
 <image src ="ferMAIN.drawio.png">
 
 функций showBoard
+
 <image src ="ferSB.drawio.png">
 
 Функция chekQueen
+
 <image src ="ferCQ.drawio.png">
   
 # 4) Тесты
