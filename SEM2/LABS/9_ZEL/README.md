@@ -87,4 +87,25 @@ int main()
 <image src ="lab9_chek.drawio.png">
 
 # 4) Тесты
-<image src ="test1_lab5.png">
+
+1. В консоли
+
+<image src ="lab9_12-13_test.png">
+
+В файле F2
+
+<image src ="lab9_12-13_test_txt.png">
+
+2. В консоли
+
+<image src ="lab9_4-8_test.png">
+
+В файле F2
+
+<image src ="lab9_4-8_test_txt.png">
+
+
+
+
+
+
