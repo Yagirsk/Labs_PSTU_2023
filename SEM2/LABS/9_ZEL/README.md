@@ -12,76 +12,79 @@
 # 2) Код программы
 
 ```cpp
-#include <iostream>
+﻿#include <iostream>
+#include <fstream>
+#include <string>
 using namespace std;
-void chek(int array[100][100], int af, int bf)
+char SOGLalphabet[20] = { 'q', 'w', 'r', 't', 'p', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm' };
+int chekSog(string str) 
 {
-	for (int i = 0; i < af; i++)
-	{
-		int imax = array[i][0];
-		int imin = array[i][0];
-		int pmin = 0, pmax = 0;
-		for (int j2 = 0; j2 < bf; j2++)
-		{
-			if (array[i][j2] > imax) { imax = array[i][j2]; pmax = j2; }
-			if (array[i][j2] < imin) { imin = array[i][j2]; pmin = j2; }
-		}
-		bool flmax = 1, flmin = 1;
-		for (int k = 0; k < af; k++)
-		{
-			if (k != i)
-			{
-				if (array[k][pmax] < array[i][pmax]) { flmax = 0; }
-				if (array[k][pmin] > array[i][pmin]) { flmin = 0; }
-			}
-		}
-		if (flmax == 1) { cout << "Седловая точка: " << array[i][pmax] << " На координатах " << i + 1 << ";" << pmax + 1 << endl; }
-		if (flmin == 1) { cout << "Седловая точка: " << array[i][pmin] << " На координатах " << i + 1 << ";" << pmin + 1 << endl; }
-	}
+    int sogSTR = 0;
+    for (int i = 0; i < str.length(); i++) 
+    {
+        char tmps = tolower(str[i]);
+        for (int i = 0; i < 20; i++)
+        {
+            if (tmps == SOGLalphabet[i])
+            {
+                sogSTR++;
+            }
+        }
+    }
+    return sogSTR;
 }
-
-int main()
+int main() 
 {
-	setlocale(LC_ALL, "ru_RU");
-	const int m = 100, n = 100;
-	int a, b;
-	cin >> a >> b;
-	int arr[m][n];
-	for (int i = 0; i < a; i++)
-	{
-		for (int j = 0; j < b; j++)
-		{
-			arr[i][j]=rand()%10;
-		}
-	}
-	cout << endl;
-	for (int i = 0; i < a; i++)
-	{
-		for (int j = 0; j < b; j++)
-		{
-			cout << arr[i][j] << " ";
-		}
-		cout << endl;
-	}
-	cout << endl;
-	chek(arr, a, b);
-	return 0;
+    setlocale(LC_ALL, "ru_RU");
+    ifstream f1("F1.txt");
+    ofstream f2("F2.txt");
+    if (!f1.is_open() || !f2.is_open())
+    {
+        cout << "Ошибка при открытии одного из файлов" << endl;
+    }
+    int N, K;
+    cout << "Введите N и K: ";
+    cin >> N >> K;
+
+    string tmp;
+    int tmpNum = 1;
+    while (getline(f1, tmp))
+    {
+        if (tmpNum >= N && tmpNum <= K) 
+        {
+            f2 << tmp << endl;
+        }
+        tmpNum++;
+    }
+    f1.close();
+    f2.close();
+
+    ifstream f3("F2.txt");
+    if (!f3.is_open()) 
+    {
+        cout << "Ошибка при открытии файла F2" << endl;
+    }
+    string tmp2;
+    int sogKolv = 0;
+    while (getline(f3, tmp2)) 
+    {
+        sogKolv += chekSog(tmp2);
+    }
+    f3.close();
+
+    cout << "Количество согласных в файле F2 " << sogKolv << endl;
+    return 0;
 }
 ```
 
 # 3) Блок схемы
 функция main
 
-<image src ="lab5p2.drawio.png">
+<image src ="lab9_main.drawio.png">
 
-Функция chek
+Функция chekSog
 
-<image src ="lab5p1.drawio.png">
+<image src ="lab9_chek.drawio.png">
 
 # 4) Тесты
 <image src ="test1_lab5.png">
-
-<image src ="test2_lab5.png">
-
-<image src ="test3_lab5.png">
-
