@@ -12,44 +12,24 @@ min не менее трех раз с количеством параметро
 ```cpp
 #include <iostream>
 using namespace std;
+int min(int k, ...)
+{
+	int* s = &k+2;
+	int mini = *s;
+	for(int i = 0; i < k; i++)
+	{
+		if (*(s + 2 * i) < mini)
+		{
+			mini = *s;
+		}
+	}
+	return mini;
+}
 int main()
 {
-	const int n = 100;
-	int a[n];
-	int d, k;
-	cin >> d;
-	bool t = 0;
-	for (int i = 0; i < d; i++)
-	{
-		a[i] = rand() % 10;
-		cout << a[i] << " ";
-	}
-	cout << endl;
-	cin >> k;
-	for (int i = k - 1; i < d - 1; i++)
-	{
-		a[i] = a[i + 1];
-	}
-	d--;
-	int j = 0;
-	while (t == 0)
-	{
-		if (a[j] % 2 == 0)
-		{
-			for (int i = d; i > j+1; i--)
-			{
-				a[i] = a[i-1];
-			}
-			t = 1;
-			a[j+1] = a[j] + 2;
-		}
-		j++;
-	}
-	d++;
-	for (int i = 0; i < d; i++)
-	{
-		cout << a[i] << " ";
-	}
+	cout << min(5, 1, 4, 5, 7, 4) << endl;
+	cout << min(10, 2, 3, 5, 8, 11, 22, 312, 1, 23, 43) << endl;
+	cout << min(12, 101, 314, 512, 724, 122, 233, 345, 543, 678, 122, 344, 987) << endl;
 	return 0;
 }
 ```
