@@ -1,5 +1,4 @@
 ﻿#include <iostream>
-#include <math.h>
 using namespace std;
 double pi = atan(1) * 4;
 int tp = 1;
