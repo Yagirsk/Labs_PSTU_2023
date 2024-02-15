@@ -38,11 +38,11 @@ int main()
 # 3) Блок схема
 Функция main
 
-<image src ="lab7.2_main.deawio.png">
+<image src ="lab7.2_main.drawio.png">
 
 Функция mini
 
-<image src ="lab7.2_mini.deawio.png">
+<image src ="lab7.2_mini.drawio.png">
 
 # 4) Тесты
 
