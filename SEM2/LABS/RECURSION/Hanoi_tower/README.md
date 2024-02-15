@@ -39,9 +39,9 @@ int main()
 
 <image src ="TOHmain.drawio.png">
 
-Функция mainTOH
+Функция TOH
 
-<image src ="TOHtoh/drawio.png">
+<image src ="TOHtoh.drawio.png">
     
 # 4) Тесты
 <image src ="test1_hanoi.png">
