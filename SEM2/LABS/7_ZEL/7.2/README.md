@@ -42,7 +42,7 @@ int main()
 
 Функция mini
 
-<image src ="lab7.2_mini.drawio.png">
+<image src ="lab7.2_miniF.drawio.png">
 
 # 4) Тесты
 
