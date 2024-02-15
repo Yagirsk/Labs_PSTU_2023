@@ -34,8 +34,15 @@ int main()
 ```
 
 # 3) Блок схема
-coming soon
-  
+
+Функция main
+
+<image src ="TOHmain.drawio.png">
+
+Функция mainTOH
+
+<image src ="TOHtoh/drawio.png">
+    
 # 4) Тесты
 <image src ="test1_hanoi.png">
 
