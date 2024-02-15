@@ -50,7 +50,7 @@ int main()
 	
 Функция foo
 
-<image src ="SoR_foo_s.drawio.png">
+<image src ="SoR_foo_s2.drawio.png">
 	
 Функция factorial
 
