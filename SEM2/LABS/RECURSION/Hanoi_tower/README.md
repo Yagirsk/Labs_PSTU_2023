@@ -41,7 +41,7 @@ int main()
 
 Функция TOH
 
-<image src ="TOHtoh.drawio.png">
+<image src ="TOH_toh.drawio.png">
     
 # 4) Тесты
 <image src ="test1_hanoi.png">
