@@ -43,7 +43,19 @@ int main()
 ```
 
 # 3) Блок схема
-coming soon
+
+Функция main
+
+<image src ="SoR_main.drawio.png">
+	
+Функция foo
+
+<image src ="SoR_foo_s.drawio.png">
+	
+Функция factorial
+
+<image src ="SoR_fact.drawio.png">
+
   
 # 4) Тесты
 <image src ="test1_SoR.png">
