@@ -1,6 +1,5 @@
 ﻿#include <iostream>
 #include <math.h>
-#define _USE_MATH_DEFINES
 using namespace std;
 double pi = atan(1) * 4;
 int tp = 1;
