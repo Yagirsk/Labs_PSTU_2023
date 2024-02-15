@@ -40,7 +40,7 @@ int main()
 
 <image src ="lab7.2_main.drawio.png">
 
-Функция mini
+Функция min
 
 <image src ="lab7.2_miniF.drawio.png">
 
