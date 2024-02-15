@@ -36,7 +36,13 @@ int main()
 ```
 
 # 3) Блок схема
-<image src ="lab4ss.drawio.png">
+Функция main
+
+<image src ="lab7.2_main.deawio.png">
+
+Функция mini
+
+<image src ="lab7.2_mini.deawio.png">
 
 # 4) Тесты
 
