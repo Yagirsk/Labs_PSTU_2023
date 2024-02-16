@@ -3,9 +3,9 @@
 using namespace std;
 int main()
 {
-	string s, str;
+	string s, str, tmp;
 	int k = 0;
-	cin >> s;
+	getline(cin, s);
 	int d = s.length();
 	for (int i = 0; i < d; i++)
 	{
