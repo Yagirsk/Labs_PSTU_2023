@@ -70,17 +70,17 @@ int main()
 # 3) Блок схемы
 функция main
 
-<image src ="lab5p2.drawio.png">
+<image src ="7.1main_str.drawio.png">
 
-Функция chek
+Функция subtact (complex)
 
-<image src ="lab5p1.drawio.png">
+<image src ="lab7.1_subtr2.drawio.png">
+
+Функция subtact (double)
+
+<image src ="lab7.1_subtr1.drawio.png">
 
 # 4) Тесты
-<image src ="test1_lab5.png">
+<image src ="pereg_test1.png">
 
-<image src ="test2_lab5.png">
-
-<image src ="test3_lab5.png">
-
-
+<image src ="pereg_test2.png">
