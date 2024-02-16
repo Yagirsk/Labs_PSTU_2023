@@ -39,7 +39,7 @@ int main()
 ```
 
 # 3) Блок схема
-<image src ="lab6.drawio.png">
+<image src ="lab6s.drawio.png">
 
 # 4) Тесты
 <image src ="lab6_test1.png">
