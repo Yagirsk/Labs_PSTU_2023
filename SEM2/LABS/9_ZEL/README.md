@@ -88,7 +88,7 @@ int main()
 
 # 4) Тесты
 
-1. В консоли
+В консоли
 
 <image src ="lab9_12-13_test.png">
 
@@ -96,13 +96,6 @@ int main()
 
 <image src ="lab9_12-13_test_txt.png">
 
-2. В консоли
-
-<image src ="lab9_4-8_test.png">
-
-В файле F2
-
-<image src ="lab9_4-8_test_txt.png">
 
 
 
