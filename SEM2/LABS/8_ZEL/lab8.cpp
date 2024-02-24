@@ -40,7 +40,7 @@ void setS(int n)
 			f1 << "Оценка по физике: " << human.phys << endl;
 			cout << "Введите оценку по русскому языку" << endl;
 			cin >> human.rus;
-			f1 << "Оценка по руссному: " << human.rus << endl;
+			f1 << "Оценка по русскому: " << human.rus << endl;
 			cout << "Введите оценку по литературе" << endl;
 			cin >> human.litr;
 			f1 << "Оценка по литературе: " << human.litr << endl;
