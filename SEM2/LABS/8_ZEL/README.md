@@ -1,5 +1,4 @@
 # 1) Задание
-**Перегрузка функций** 
 
 Лабораторная работа №8, вариант 6
 
@@ -24,63 +23,196 @@
 # 2) Код программы
 
 ```cpp
-﻿#include <iostream>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
 using namespace std;
-struct Complex 
+int num = 1;
+vector <string> save;
+struct School
 {
-    double real;
-    double komp;
+	string name;
+	int classt;
+	long long int phone;
+	int math;
+	int phys;
+	int rus;
+	int litr;
 };
-Complex subtract(Complex knum1, Complex knum2) 
+void setS(int n)
 {
-    Complex result;
-    result.real = knum1.real - knum2.real;
-    result.komp = knum1.komp - knum2.komp;
-    return result;
+	ofstream f1("f.txt");
+	if (f1.is_open())
+	{
+		for (int i = 0; i < n; i++)
+		{
+			School human;
+			cout << "Введите ФИО ученика №" << num << endl;
+			cin >> human.name;
+			f1 << human.name << endl;
+			cout << "Введите класс ученика" << endl;
+			cin >> human.classt;
+			f1 << "Класс: " << human.classt << endl;
+			cout << "Введите номер телефона ученика" << endl;
+			cin >> human.phone;
+			f1 << "Номер телефона: " << human.phone << endl;
+			cout << "Введите оценку по математике" << endl;
+			cin >> human.math;
+			f1 << "Оценка по математике: " << human.math << endl;
+			cout << "Введите оценку по физике" << endl;
+			cin >> human.phys;
+			f1 << "Оценка по физике: " << human.phys << endl;
+			cout << "Введите оценку по русскому языку" << endl;
+			cin >> human.rus;
+			f1 << "Оценка по руссному: " << human.rus << endl;
+			cout << "Введите оценку по литературе" << endl;
+			cin >> human.litr;
+			f1 << "Оценка по литературе: " << human.litr << endl;
+			num++;
+		}
+	}
+	else
+	{
+		cout << "Ошибка при открытии файла" << endl;
+	}
+	f1.close();
 }
-double subtract(double rnum1, double rnum2)
+void show()
 {
-    double result;
-    result = rnum1 - rnum2;
-    return result;
+	ifstream f1("f.txt");
+	if (f1.is_open())
+	{
+		string tmp;
+		while (getline(f1, tmp))
+		{
+			cout << tmp << endl;
+		}
+		cout << "\n\n";
+	}
+	else
+	{
+		cout << "Ошибка при открытии файла" << endl;
+	}
+	f1.close();
 }
-int main() 
+void saver()
 {
-    setlocale(LC_ALL, "ru_RU");
-    int rnum1, rnum2, rresult;
-    Complex knum1, knum2, kresult;
-
-    cin >> rnum1;
-    cin >> rnum2;
-    rresult = subtract(rnum1, rnum2);
-    cout << "Результат: " << rresult << endl;
-
-    cin >> knum1.real >> knum1.komp;
-    cin >> knum2.real >> knum2.komp;
-    kresult = subtract(knum1, knum2);
-    cout << "Результат: " << kresult.real << " + " << kresult.komp << "i" << endl;
-    return 0;
+	string tmp;
+	ifstream f1("f.txt");
+	if (f1.is_open())
+	{
+		while (getline(f1, tmp))
+		{
+			save.push_back(tmp);
+		}
+	}
+	else
+	{
+		cout << "Ошибка при открытии файла" << endl;
+	}
+	f1.close();
+}
+void del (int n)
+{
+	ofstream f3("f.txt");
+	if (f3.is_open())
+	{
+		School human;
+		cout << "Введите ФИО нового ученика" << endl;
+		cin >> human.name;
+		f3 << human.name << endl;
+		cout << "Введите класс ученика" << endl;
+		cin >> human.classt;
+		f3 << "Класс: " << human.classt << endl;
+		cout << "Введите номер телефона ученика" << endl;
+		cin >> human.phone;
+		f3 << "Номер телефона: " << human.phone << endl;
+		cout << "Введите оценку по математике" << endl;
+		cin >> human.math;
+		f3 << "Оценка по математике: " << human.math << endl;
+		cout << "Введите оценку по физике" << endl;
+		cin >> human.phys;
+		f3 << "Оценка по физике: " << human.phys << endl;
+		cout << "Введите оценку по русскому языку" << endl;
+		cin >> human.rus;
+		f3 << "Оценка по руссному: " << human.rus << endl;
+		cout << "Введите оценку по литературе" << endl;
+		cin >> human.litr;
+		f3 << "Оценка по литературе: " << human.litr << endl;
+		for (int i = 0; i < n; i++)
+		{
+			bool extermination = 0;
+			for (int j = i * 7 + 3; j < i * 7 + 7; j++)
+			{
+				string str = save[j];
+				for (int k = 0; k < str.length(); k++)
+				{
+					char b = str[k];
+					if (b == '2')
+					{
+						extermination = 1;
+					}
+				}
+			}
+			if (!extermination)
+			{
+				for (int k = i * 7; k < i * 7 + 7; k++)
+				{
+					f3 << save[k] << endl;
+				}
+			}
+		}
+	}
+	else
+	{
+		cout << "Ошибка при открытии файла" << endl;
+	}
+	f3.close();
+}
+int main()
+{
+	setlocale(LC_ALL, "ru_RU");
+	int n;
+	cout << "Введите количество учеников" << endl;
+	cin >> n;
+	setS(n);
+	show();
+	saver();
+	del(n);
+	show();
+	return 0;
 }
 ```
 
 # 3) Блок схемы
 функция main
 
-<image src ="7.1main_str.drawio.png">
+<image src ="lab8_main.drawio.png">
 
-Функция subtact (complex)
+Функция saver
 
-<image src ="lab7.1_subtr2.drawio.png">
+<image src ="lab8_saver.drawio.png">
 
-Функция subtact (double)
+Функция del
 
-<image src ="lab7.1_subtr1.drawio.png">
+<image src ="lab8_delT.drawio.png">
 
-Структура Complex
+Функция setS
 
-<image src ="lab7.1_struct.drawio.png">
+<image src ="lab8_set.drawio.png">
+
+Функция show
+
+<image src ="lab8_show.drawio.png">
+
+Структура School
+
+<image src ="lab8_struct.drawio.png">
+
 
 # 4) Тесты
+
 <image src ="pereg_test1.png">
 
 <image src ="pereg_test2.png">
