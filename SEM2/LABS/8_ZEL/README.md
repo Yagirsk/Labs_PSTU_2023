@@ -211,8 +211,24 @@ int main()
 <image src ="lab8_struct.drawio.png">
 
 
-# 4) Тесты
+# 4) Тест
 
-<image src ="pereg_test1.png">
+Первоначальный вводв в файл
 
-<image src ="pereg_test2.png">
+<image src ="1st_enter.png">
+
+Вывод из файла
+
+<image src ="1st_conclusion.png">
+
+Ввод данных нового ученика
+
+<image src ="newS_enter.png">
+
+Итоговый вывод, с новым учеником вначале, и удаленными ученика с двойкой по любому из предметов
+
+<image src ="final_conclusion.png">
+
+Результат в файле
+
+<image src ="inFILE.png">
