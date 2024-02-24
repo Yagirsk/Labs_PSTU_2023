@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -40,7 +40,7 @@ void setS(int n)
 			f1 << "Оценка по физике: " << human.phys << endl;
 			cout << "Введите оценку по русскому языку" << endl;
 			cin >> human.rus;
-			f1 << "Оценка по русскому: " << human.rus << endl;
+			f1 << "Оценка по руссному: " << human.rus << endl;
 			cout << "Введите оценку по литературе" << endl;
 			cin >> human.litr;
 			f1 << "Оценка по литературе: " << human.litr << endl;
@@ -93,6 +93,28 @@ void del (int n)
 	ofstream f3("f.txt");
 	if (f3.is_open())
 	{
+		School human;
+		cout << "Введите ФИО нового ученика" << endl;
+		cin >> human.name;
+		f3 << human.name << endl;
+		cout << "Введите класс ученика" << endl;
+		cin >> human.classt;
+		f3 << "Класс: " << human.classt << endl;
+		cout << "Введите номер телефона ученика" << endl;
+		cin >> human.phone;
+		f3 << "Номер телефона: " << human.phone << endl;
+		cout << "Введите оценку по математике" << endl;
+		cin >> human.math;
+		f3 << "Оценка по математике: " << human.math << endl;
+		cout << "Введите оценку по физике" << endl;
+		cin >> human.phys;
+		f3 << "Оценка по физике: " << human.phys << endl;
+		cout << "Введите оценку по русскому языку" << endl;
+		cin >> human.rus;
+		f3 << "Оценка по руссному: " << human.rus << endl;
+		cout << "Введите оценку по литературе" << endl;
+		cin >> human.litr;
+		f3 << "Оценка по литературе: " << human.litr << endl;
 		for (int i = 0; i < n; i++)
 		{
 			bool extermination = 0;
