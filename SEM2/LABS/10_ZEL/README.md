@@ -8,47 +8,59 @@
 # 2) Код программы
 
 ```cpp
-#include <iostream>
+﻿#include <iostream>
 using namespace std;
-int main()
+int main() 
 {
-	const int n = 100;
-	int a[n];
-	int d, k;
-	cin >> d;
-	bool t = 0;
-	for (int i = 0; i < d; i++)
-	{
-		a[i] = rand() % 10;
-		cout << a[i] << " ";
-	}
-	cout << endl;
-	cin >> k;
-	for (int i = k - 1; i < d - 1; i++)
-	{
-		a[i] = a[i + 1];
-	}
-	d--;
-	int j = 0;
-	while (t == 0)
-	{
-		if (a[j] % 2 == 0)
-		{
-			for (int i = d; i > j+1; i--)
-			{
-				a[i] = a[i-1];
-			}
-			t = 1;
-			a[j+1] = a[j] + 2;
-		}
-		j++;
-	}
-	d++;
-	for (int i = 0; i < d; i++)
-	{
-		cout << a[i] << " ";
-	}
-	return 0;
+    setlocale(LC_ALL, "ru_RU");
+    int strok, stolb;
+    cout << "Введите количество строк и столбцов соответственно: ";
+    cin >> strok >> stolb;
+    int** matrix = new int*[strok];
+    for (int i = 0; i < strok; i++)
+    {
+        matrix[i] = new int[stolb];
+        for (int j = 0; j < stolb; j++)
+        {
+            matrix[i][j] = rand() % 10;
+        }
+    }
+    cout << "Исходный массив:" << endl;
+    for (int i = 0; i < strok; i++) 
+    {
+        for (int j = 0; j < stolb; j++) 
+        {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+    int del;
+    cout << "Введите номер строки для удаления: ";
+    cin >> del;
+    for (int i = del - 1; i < strok - 1; i++)
+    {
+        for (int j = 0; j < stolb; j++)
+        {
+            matrix[i][j] = matrix[i + 1][j];
+        }
+    }
+    delete[] matrix[strok - 1];
+    strok--;
+    cout << "Итоговый массив:" << endl;
+    for (int i = 0; i < strok; i++)
+    {
+        for (int j = 0; j < stolb; j++)
+        {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+    for (int i = 0; i < strok; i++)
+    {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
+    return 0;
 }
 ```
 
