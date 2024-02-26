@@ -24,7 +24,8 @@ void setS(int n)
 		{
 			School human;
 			cout << "Введите ФИО ученика №" << num << endl;
-			cin >> human.name;
+			cin.ignore();
+			getline(cin, human.name);
 			f1 << human.name << endl;
 			cout << "Введите класс ученика" << endl;
 			cin >> human.classt;
