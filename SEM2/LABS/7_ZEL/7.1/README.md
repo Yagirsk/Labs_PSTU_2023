@@ -54,7 +54,7 @@ int main()
 # 3) Блок схемы
 функция main
 
-<image src ="7.1main_str.drawio.png">
+<image src ="7.1main.drawio.png">
 
 Функция subtact (complex)
 
