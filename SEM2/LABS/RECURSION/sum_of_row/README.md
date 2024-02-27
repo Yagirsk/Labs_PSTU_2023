@@ -13,7 +13,6 @@
 #include <iostream>
 using namespace std;
 double pi = atan(1) * 4;
-int tp = 1;
 double factorial(int a)
 {
 	int k = 1;
