@@ -35,7 +35,7 @@ double subtract(double rnum1, double rnum2)
 int main() 
 {
     setlocale(LC_ALL, "ru_RU");
-    int rnum1, rnum2, rresult;
+    double rnum1, rnum2, rresult;
     Complex knum1, knum2, kresult;
 
     cin >> rnum1;
