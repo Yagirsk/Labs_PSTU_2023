@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 using namespace std;
-double pi = atan(1) * 4;
+const double pi = atan(1) * 4;
 double factorial(int a)
 {
 	int k = 1;
