@@ -2,7 +2,6 @@
 #include <fstream>
 #include <string>
 using namespace std;
-int counter = 1;
 struct ListElem
 {
     int data;
@@ -16,6 +15,7 @@ ListElem* createList(int n)
         ListElem* start = nullptr;
         ListElem* p, * r;
         start = new ListElem;
+        int counter = 1;
         cout << "Введите элемент №" << counter << " ";
         counter++;
         cin >> start->data;
