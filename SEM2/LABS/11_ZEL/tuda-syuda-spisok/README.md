@@ -263,7 +263,7 @@ int main()
 
 # 4) Тесты
 
-<image src ="test1_lab4.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/test_1.png">
 
-
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/test_2.png">
 
