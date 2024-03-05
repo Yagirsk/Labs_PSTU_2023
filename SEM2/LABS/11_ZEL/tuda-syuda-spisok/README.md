@@ -256,6 +256,10 @@ int main()
 
 <image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss-save-v2.drawio.png">
 
+Структура ListElem
+
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss-LE.drawio.png">
+
 
 # 4) Тесты
 
