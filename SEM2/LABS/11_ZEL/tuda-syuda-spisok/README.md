@@ -238,23 +238,23 @@ int main()
     
 Функция cleaner
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss-create.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss-clean.drawio.png">
 
 Функция delElem
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss-create.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss-del.drawio.png">
 
 Функция newFistElem
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss-create.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss-new-elemEl.drawio.png">
 
 Функция recovery
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss-create.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss-rec.drawio.png">
 
 Функция saver
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss-create.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss-save-v2.drawio.png">
 
 
 # 4) Тесты
