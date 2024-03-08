@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <string>
 using namespace std;
@@ -51,19 +51,21 @@ Stack create_stack (int size)
     }
     return stack;
 }
-void showStack (StackElem* top)
+void showStack(Stack &stack)
 {
-    StackElem* tmp = top;
-    if (tmp == nullptr)
-    {
-        cout << "void" << endl;
-        return;
-    }
     cout << "Стек: ";
-    while (tmp != nullptr)
+    Stack tmpStack{ };
+    tmpStack.init();
+    while (stack.topElem() != nullptr)
     {
-        cout << tmp->data << " ";
-        tmp = tmp->next;
+        int data = stack.pop();
+        tmpStack.push(data);
+    }
+    while (tmpStack.topElem() != nullptr)
+    {
+        int data = tmpStack.pop();
+        cout << data << " ";
+        stack.push(data);
     }
     cout << endl;
 }
@@ -82,6 +84,11 @@ void StackExtermination (Stack& stack)
 }
 void DelElem (Stack& stack, int num)
 {
+    if (num > stack.size)
+    {
+        cout << "erroe\n";
+        return;
+    }
     int tmpSize = stack.size - num;
     Stack tmpStack{ };
     tmpStack.init();
@@ -158,20 +165,20 @@ int main()
     cout << "Введите количество элементов в стеке: ";
     cin >> size;
     Stack steck = create_stack(size);
-    showStack(steck.topElem());
+    showStack(steck);
     if (steck.top != nullptr)
     {
         int num;
         cout << "Введите номер элемента который будет удален: ";
         cin >> num;
         DelElem(steck, num);
-        showStack(steck.topElem());
+        showStack(steck);
         addElem(steck);
-        showStack(steck.topElem());
+        showStack(steck);
         saver(steck);
         StackExtermination(steck); // необязательно т.к. после saver стек уже пуст, но пусть будет
         RetuneStackToTheTrueGlory(steck);
-        showStack(steck.topElem());
+        showStack(steck);
     }
     return 0;
 }
