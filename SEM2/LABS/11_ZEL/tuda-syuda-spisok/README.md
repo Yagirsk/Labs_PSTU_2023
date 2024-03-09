@@ -230,7 +230,7 @@ int main()
 
 Функция main
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss-main.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss2-main.drawio.png">
 
 Функция createList
 
