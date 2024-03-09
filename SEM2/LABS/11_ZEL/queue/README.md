@@ -260,11 +260,11 @@ int main()
 
 Метод frontEl
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/queue/images/queue_frontEl.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/queue/images/queue_met_frontEl.drawio.png">
 
 Метод backEl
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/queue/images/queue_backEl.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/queue/images/queue_met_backEl.drawio.png">
 
 
 # 4) Тесты
