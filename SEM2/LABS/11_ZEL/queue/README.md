@@ -208,59 +208,63 @@ int main()
 
 Функция main
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_main_v2.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/queue/images/queue_main.drawio.png">
 
-Функция create_stack
+Функция create_queue
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/ts_create.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/queue/images/queue_create.drawio.png">
     
-Функция showStack
+Функция showQueue
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_show.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/queue/images/queue_create.drawio.png">
 
-Функция StackExtermination
+Функция delQueue
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_exterm.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/queue/images/queue_delQueue.drawio.png">
 
-Функция DelElem
+Функция delElem
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_delEl.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/queue/images/queue_delElem.drawio.png">
 
-Функция RetuneStackToTheTrueGlory
+Функция ressurection
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_trueGlory.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/queue/images/queue_ressur.drawio.png">
 
 Функция saver
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_svaer.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/queue/images/queue_saver.drawio.png">
 
-Функция addElem
+Функция tolko_sprosit
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_add.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/queue/images/queue_tolkoSprosit.drawio.png">
 
-Структура StackElem
+Структура QueueElem
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_stackEl.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/queue/images/queue_quElem.drawio.png">
 
-Структура Stack
+Структура Queue
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_structStek.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/queue/images/queue_queue.drawio.png">
 
 Метод init
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_met_init.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/queue/images/queue_met_init.drawio.png">
 
 Метод push
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_met_push.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/queue/images/queue_met_push.drawio.png">
 
 Метод pop
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_met_pop.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/queue/images/queue_met_pop.drawio.png">
 
-Метод topElem
+Метод frontEl
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_met_topEl.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/queue/images/queue_frontEl.drawio.png">
+
+Метод backEl
+
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/queue/images/queue_backEl.drawio.png">
 
 
 # 4) Тесты
