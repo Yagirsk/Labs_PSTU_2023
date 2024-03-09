@@ -53,11 +53,6 @@ Stack create_stack (int size)
 }
 void showStack(Stack &stack)
 {
-    if (tmp == nullptr)
-    {
-        cout << "Стек пуст" << endl;
-        return;
-    }
     cout << "Стек: ";
     Stack tmpStack{ };
     tmpStack.init();
