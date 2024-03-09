@@ -26,187 +26,192 @@ int.
 # 2) Код программы
 
 ```cpp
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <string>
 using namespace std;
-int counter = 1;
-struct ListElem
+struct StackElem
 {
     int data;
-    ListElem* next;
+    StackElem* next;
 };
-ListElem* createList(int n)
+struct Stack
 {
-    if (n > 0)
+    StackElem* top;
+    int size;
+    void init()
     {
-        ListElem* start = nullptr;
-        ListElem* p, * r;
-        start = new ListElem;
-        cout << "Введите элемент №" << counter << " ";
-        counter++;
-        cin >> start->data;
-        start->next = nullptr;
-        p = start;
-        for (int i = 0; i < n - 1; i++)
-        {
-            cout << "Введите элемент №" << counter << " ";
-            counter++;
-            r = new ListElem;
-            cin >> r->data;
-            r->next = nullptr;
-            p->next = r;
-            p = r;
-        }
-        return start;
+        top = nullptr;
+        size = 0;
     }
-    return nullptr;
+    void push(int data)
+    {
+        StackElem* cur = new StackElem;
+        cur->data = data;
+        cur->next = top;
+        top = cur;
+        size++;
+    }
+    int pop()
+    {
+        int value = top->data;
+        StackElem* tmp = top;
+        top = top->next;
+        size--;
+        delete tmp;
+        return value;
+    }
+    StackElem* topElem()
+    {
+        return top;
+    }
+};
+Stack create_stack (int size)
+{
+    Stack stack{ };
+    stack.init();
+    int data, counter = 1;
+    for (int i = 0; i < size; i++)
+    {
+        cout << "Введите элемент №" << counter++ << " ";
+        cin >> data;
+        stack.push(data);
+    }
+    return stack;
 }
-void showList(ListElem* start)
+void showStack(Stack &stack)
 {
-    if (start != nullptr)
+    if (stack.top == nullptr)
     {
-        cout << "Список: ";
-        ListElem* p = start;
-        while (p != nullptr) 
-        {
-            cout << p->data << " ";
-            p = p->next;
-        }
-        cout << endl;
-    }
-    else
-    {
-        cout << "Список пуст " << endl;
-    }
-    return;
-}
-void delElem(int del, int n, ListElem*& start)
-{
-    if (n == 0)
-    {
-        cout << "error";
+        cout << "Стек пуст\n";
         return;
     }
-    else if (del > n)
+    cout << "Стек: ";
+    Stack tmpStack{ };
+    tmpStack.init();
+    while (stack.topElem() != nullptr)
     {
-        cout << "error";
-        return;
+        int data = stack.pop();
+        tmpStack.push(data);
     }
-    else
+    while (tmpStack.topElem() != nullptr)
     {
-        ListElem* p = start;
-        if (del == 1)
-        {
-            start = start->next;
-            delete p;
-            return;
-        }
-
-        for (int i = 1; i < del - 1; i++)
-        {
-            p = p->next;
-        }
-
-        ListElem* temp = p->next;
-        p->next = temp->next;
+        int data = tmpStack.pop();
+        cout << data << " ";
+        stack.push(data);
+    }
+    cout << endl;
+}
+void StackExtermination (Stack& stack)
+{
+    StackElem* current = stack.top;
+    while (current != nullptr)
+    {
+        StackElem* temp = current;
+        current = current->next;
         delete temp;
     }
+    stack.top = nullptr;
+    stack.size = 0;
+    cout << "Стек удален\n";
 }
-void newFirstElem(ListElem*& start)
+void DelElem (Stack& stack, int num)
 {
-    int newElem;
-    cout << "Введите значения нового элемента который встанет на первую позицию в списке ";
-    cin >> newElem;
-    ListElem* newElemA = new ListElem;
-    newElemA->data = newElem;
-    newElemA->next = start;
-    start = newElemA;
-}
-void saver(ListElem* start)
-{
-    ofstream file("F1.txt");
-    if (file.is_open())
+    if (num > stack.size)
     {
-        ListElem* p = start;
-        while (p != nullptr)
-        {
-            file << p->data << endl;
-            p = p->next;
-        }
-        cout << "Список сохранен в файл " << endl;
+        cout << "erroe\n";
+        return;
     }
-    else
+    int tmpSize = stack.size - num;
+    Stack tmpStack{ };
+    tmpStack.init();
+    for (int i = 0; i < tmpSize; i++)
     {
-        cout << "error";
+        int data = stack.pop();
+        tmpStack.push(data);
+    }
+    StackElem* tmps = stack.topElem();
+    stack.top = stack.top->next;
+    delete tmps;
+    for (int i = 0; i < tmpSize; i++)
+    {
+        int data = tmpStack.pop();
+        stack.push(data);
+    }
+    stack.size--;
+}
+void addElem (Stack& stack)
+{
+    Stack tmpStack{ };
+    tmpStack.init();
+    int sizer = stack.size;
+    for (int i = 0; i < sizer; i++)
+    {
+        int data = stack.pop();
+        tmpStack.push(data);
+    }
+    int newData;
+    cout << "Введите значение нового элемента который станет на первую позицию: ";
+    cin >> newData;
+    stack.push(newData);
+    while (tmpStack.top != nullptr)
+    {
+        int data = tmpStack.pop();
+        stack.push(data);
+    }
+    stack.size++;
+}
+void saver (Stack& stack)
+{
+    ofstream file("F.txt");
+    while (stack.top != nullptr)
+    {
+        int data = stack.pop();
+        file << data << endl;
     }
     file.close();
+    cout << "Стек сохранен\n";
 }
-void cleaner(ListElem*& start)
+void RetuneStackToTheTrueGlory(Stack& stack)
 {
-    ListElem* ext = start;
-    ListElem* save;
-    while (ext != nullptr)
+    ifstream file("F.txt");
+    Stack tmpStack{ };
+    tmpStack.init();
+    string tmpStr;
+    while (getline(file, tmpStr))
     {
-        save = ext->next;
-        delete ext;
-        ext = save;
+        int data = stoi(tmpStr);
+        tmpStack.push(data);
     }
-    start = nullptr;
-    cout << "Список удален " << endl;
-}
-void recovery(ListElem* start)
-{
-    ifstream file("F1.txt");
-    if (file.is_open())
+    while (tmpStack.top != nullptr)
     {
-        ListElem* p, * r;
-        start->next = nullptr;
-        string tmp;
-        getline(file, tmp);
-        int numb = stoi(tmp);
-        start->data = numb;
-        p = start;
-        while (getline(file, tmp))
-        {
-            int num = stoi(tmp);
-            r = new ListElem;
-            r->data = num;
-            r->next = nullptr;
-            p->next = r;
-            p = r;
-        }
-        cout << "Список восстановлен " << endl;
-    }
-    else
-    {
-        cout << "error";
+        int data = tmpStack.pop();
+        stack.push(data);
     }
     file.close();
+    cout << "Стек восстановлен\n";
 }
 int main()
 {
     setlocale(LC_ALL, "ru_RU");
-    int n;
-    cout << "Введите количество элементов списка ";
-    cin >> n;
-    ListElem* start = createList(n);
-    cout << endl;
-    showList(start);
-    if (start->next != nullptr)
+    int size;
+    cout << "Введите количество элементов в стеке: ";
+    cin >> size;
+    Stack steck = create_stack(size);
+    showStack(steck);
+    if (steck.top != nullptr)
     {
-        int del;
-        cout << "Введите какой элемент удалить ";
-        cin >> del;
-        delElem(del, n, start);
-        showList(start);
-        newFirstElem(start);
-        showList(start);
-        saver(start);
-        cleaner(start);
-        start = new ListElem;
-        recovery(start);
-        showList(start);
+        int num;
+        cout << "Введите номер элемента который будет удален: ";
+        cin >> num;
+        DelElem(steck, num);
+        showStack(steck);
+        addElem(steck);
+        showStack(steck);
+        saver(steck);
+        StackExtermination(steck); // необязательно т.к. после saver стек уже пуст, но пусть будет
+        RetuneStackToTheTrueGlory(steck);
+        showStack(steck);
     }
     return 0;
 }
