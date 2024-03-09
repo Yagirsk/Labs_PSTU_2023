@@ -233,11 +233,11 @@ int main()
 
 Функция newFistElem
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-spisok/images/t1s-new-elemEl.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-spisok/images/t1s-newEl.drawio.png">
 
 Функция recovery
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-spisok/images/t1s-rec.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-spisok/images/t1s_rec.drawio.png">
 
 Функция saver
 
