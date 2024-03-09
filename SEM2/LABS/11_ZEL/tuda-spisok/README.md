@@ -31,11 +31,11 @@ int.
 #include <fstream>
 #include <string>
 using namespace std;
+int counter = 1;
 struct ListElem
 {
     int data;
     ListElem* next;
-    ListElem* prev;
 };
 ListElem* createList(int n)
 {
@@ -44,12 +44,10 @@ ListElem* createList(int n)
         ListElem* start = nullptr;
         ListElem* p, * r;
         start = new ListElem;
-        int counter = 1;
         cout << "Введите элемент №" << counter << " ";
         counter++;
         cin >> start->data;
         start->next = nullptr;
-        start->prev = nullptr;
         p = start;
         for (int i = 0; i < n - 1; i++)
         {
@@ -58,7 +56,6 @@ ListElem* createList(int n)
             r = new ListElem;
             cin >> r->data;
             r->next = nullptr;
-            r->prev = p;
             p->next = r;
             p = r;
         }
@@ -70,9 +67,9 @@ void showList(ListElem* start)
 {
     if (start != nullptr)
     {
-        ListElem* p = start;
         cout << "Список: ";
-        while (p != nullptr)
+        ListElem* p = start;
+        while (p != nullptr) 
         {
             cout << p->data << " ";
             p = p->next;
@@ -85,7 +82,7 @@ void showList(ListElem* start)
     }
     return;
 }
-void delElem(int del, int n, ListElem* &start)
+void delElem(int del, int n, ListElem*& start)
 {
     if (n == 0)
     {
@@ -100,10 +97,9 @@ void delElem(int del, int n, ListElem* &start)
     else
     {
         ListElem* p = start;
-        if (del == 1) 
+        if (del == 1)
         {
             start = start->next;
-            start->prev = nullptr;
             delete p;
             return;
         }
@@ -115,23 +111,17 @@ void delElem(int del, int n, ListElem* &start)
 
         ListElem* temp = p->next;
         p->next = temp->next;
-        if (temp->next != nullptr)
-        {
-            temp->next->prev = p;
-        }
         delete temp;
     }
 }
-void newFirstElem(ListElem* &start)
+void newFirstElem(ListElem*& start)
 {
     int newElem;
     cout << "Введите значения нового элемента который встанет на первую позицию в списке ";
     cin >> newElem;
     ListElem* newElemA = new ListElem;
     newElemA->data = newElem;
-    newElemA->prev = nullptr;
     newElemA->next = start;
-    start->prev = newElemA;
     start = newElemA;
 }
 void saver(ListElem* start)
@@ -153,7 +143,7 @@ void saver(ListElem* start)
     }
     file.close();
 }
-void cleaner(ListElem* &start)
+void cleaner(ListElem*& start)
 {
     ListElem* ext = start;
     ListElem* save;
@@ -173,7 +163,6 @@ void recovery(ListElem* start)
     {
         ListElem* p, * r;
         start->next = nullptr;
-        start->prev = nullptr;
         string tmp;
         getline(file, tmp);
         int numb = stoi(tmp);
@@ -185,7 +174,6 @@ void recovery(ListElem* start)
             r = new ListElem;
             r->data = num;
             r->next = nullptr;
-            r->prev = p;
             p->next = r;
             p = r;
         }
@@ -223,42 +211,41 @@ int main()
     }
     return 0;
 }
-
 ```
 
 # 3) Блок схема
 
 Функция main
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss2-main.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-spisok/images/t1s-main.drawio.png">
 
 Функция createList
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss-create.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-spisok/images/t1s-create.drawio.png">
     
 Функция cleaner
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss-clean.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-spisok/images/t1s-clean.drawio.png">
 
 Функция delElem
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss-del.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-spisok/images/t1s-del.drawio.png">
 
 Функция newFistElem
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss-new-elemEl.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-spisok/images/t1s-new-elemEl.drawio.png">
 
 Функция recovery
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss-rec.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-spisok/images/t1s-rec.drawio.png">
 
 Функция saver
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss-save-v2.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-spisok/images/t1s-save-v2.drawio.png">
 
 Структура ListElem
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-syuda-spisok/images/tss-LE-s.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-spisok/images/t1s_struct-s.drawio.png">
 
 
 # 4) Тесты
