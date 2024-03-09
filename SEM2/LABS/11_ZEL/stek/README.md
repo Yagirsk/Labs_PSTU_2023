@@ -221,35 +221,59 @@ int main()
 
 Функция main
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-spisok/images/t1s-main.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_main_v2.drawio.png">
 
-Функция createList
+Функция create_stack
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-spisok/images/t1s-create.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_.drawio.png">
     
-Функция cleaner
+Функция showStack
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-spisok/images/t1s-clean.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_main_v2.drawio.png">
 
-Функция delElem
+Функция StackExtermination
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-spisok/images/t1s-del.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_main_v2.drawio.png">
 
-Функция newFistElem
+Функция DelElem
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-spisok/images/t1s-newEl.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_main_v2.drawio.png">
 
-Функция recovery
+Функция RetuneStackToTheTrueGlory
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-spisok/images/t1s_rec.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_main_v2.drawio.png">
 
 Функция saver
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-spisok/images/t1s-saver.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_main_v2.drawio.png">
 
-Структура ListElem
+Функция addElem
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/tuda-spisok/images/t1s_struct.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_main_v2.drawio.png">
+
+Структура StackElem
+
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_main_v2.drawio.png">
+
+Структура Stack
+
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_main_v2.drawio.png">
+
+Метод init
+
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_main_v2.drawio.png">
+
+Метод push
+
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_main_v2.drawio.png">
+
+Метод pop
+
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_main_v2.drawio.png">
+
+Метод topElem
+
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_main_v2.drawio.png">
 
 
 # 4) Тесты
