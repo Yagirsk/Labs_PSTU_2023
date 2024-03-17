@@ -8,13 +8,6 @@ int menu()
     cin >> n;
     return n;
 }
-void setArray(int arr[])
-{
-    for (int i = 0; i < Panzerselbstfahrlafette; i++)
-    {
-        arr[i] = rand() % 10;
-    }
-}
 void show_array(int arr[])
 {
     for (int i = 0; i < Panzerselbstfahrlafette; i++)
@@ -199,7 +192,6 @@ int main()
         Panzerselbstfahrlafette = n;
         int* array = new int[Panzerselbstfahrlafette];
         for (int i = 0; i < Panzerselbstfahrlafette; i++) { array[i] = rand() % 10; }
-        setArray(array);
         cout << "Исходный массив: ";
         show_array(array);
         switch (menu())
