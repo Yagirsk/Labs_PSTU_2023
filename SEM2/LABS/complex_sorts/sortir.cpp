@@ -197,7 +197,6 @@ int main()
     else
     {
         Panzerselbstfahrlafette = n;
-        extern int n;
         int* array = new int[Panzerselbstfahrlafette];
         for (int i = 0; i < Panzerselbstfahrlafette; i++) { array[i] = rand() % 10; }
         setArray(array);
