@@ -1,12 +1,19 @@
-﻿#include <iostream>
+#include <iostream>
 using namespace std;
-int Panzerselbstfahrlafette;
+const int Panzerselbstfahrlafette = 25;
 int menu()
 {
-    cout << "1 - сортировка ведрами(карманами)\n" << "2 - сортировка подсчетом\n" << "3 - сортировка слиянием\n" << "4 - сортировка Шелла\n" << "5 - быстрая сортировка\n" << "Введите цифру соответствующую тому какой метод сортировки будет использован: ";
+    cout << "1 - сортировка ведрами(карманами)\n" << "2 - сортировка подсчетом\n" << "3 - сортировка слиянием\n" << "4 - быстрая сортировка\n" << "Введите цифру соответствующую тому какой метод сортировки будет использован: ";
     int n;
     cin >> n;
     return n;
+}
+void setArray(int arr[])
+{
+    for (int i = 0; i < Panzerselbstfahrlafette; i++)
+    {
+        arr[i] = rand() % 10;
+    }
 }
 void show_array(int arr[])
 {
@@ -18,21 +25,12 @@ void show_array(int arr[])
 }
 void bucketSort(int arr[])
 {
-    int BUCKET_NUM = sqrt(Panzerselbstfahrlafette)+2;
-    int BUCKET_SIZE = sqrt(Panzerselbstfahrlafette) + 2;
-    int** buckets;
-    int l, h;
-    buckets = new int*[BUCKET_NUM];
-    for (l = 0; l < BUCKET_NUM; l++)
-    {
-        buckets[l] = new int[BUCKET_NUM];
-        for (h = 0; h < BUCKET_NUM; h++)
-        {
-            buckets[l][h] = rand() % 10;
-        }
-    }
-    int *bucketSizes= new int[BUCKET_NUM];
-    for (int i = 0; i < BUCKET_NUM; i++) { bucketSizes[i] = 0; }
+    const int BUCKET_NUM = 10;
+    const int BUCKET_SIZE = 10;
+
+    int buckets[BUCKET_NUM][BUCKET_SIZE];
+
+    int bucketSizes[BUCKET_NUM] = { 0 };
     for (int i = 0; i < Panzerselbstfahrlafette; i++)
     {
         int bucketIndex = arr[i] / BUCKET_NUM;
@@ -131,22 +129,6 @@ void mergeSort(int arr[], int start, int end)
         merge(arr, start, mid, end);
     }
 }
-void shellSort(int arr[])
-{
-    for (int h = Panzerselbstfahrlafette / 2; h > 0; h /= 2)
-    {
-        for (int i = h; i < Panzerselbstfahrlafette; i++)
-        {
-            int tmp = arr[i];
-            int j;
-            for (j = i; j >= h && arr[j - h] > tmp; j -= h)
-            {
-                arr[j] = arr[j - h];
-            }
-            arr[j] = tmp;
-        }
-    }
-}
 int partition(int arr[], int low, int high)
 {
     int pivot = arr[high];
@@ -174,57 +156,35 @@ void quickSort(int arr[], int low, int high)
 int main()
 {
     setlocale(LC_ALL, "ru_RU");
-    cout << "Введите длинну массива: ";
-    int n;
-    cin >> n;
-    if (n <= 0)
+    int* array = new int[Panzerselbstfahrlafette];
+    for (int i = 0; i < Panzerselbstfahrlafette; i++) { array[i] = rand() % 10; }
+    cout << "Исходный массив: ";
+    show_array(array);
+    switch (menu())
     {
-        cout << "Нельзя создать массив с данным количеством элементов\n";
-    }
-    else if(n == 1)
-    {
-        int arr[1] = {rand() % 10};
-        cout << "Исходный массив: " << arr[0] << endl;
-        cout << "Массив из одного элемента отсортирован по умолчанию\n";
-    }
-    else
-    {
-        Panzerselbstfahrlafette = n;
-        int* array = new int[Panzerselbstfahrlafette];
-        for (int i = 0; i < Panzerselbstfahrlafette; i++) { array[i] = rand() % 10; }
-        cout << "Исходный массив: ";
+    case 1:
+        bucketSort(array);
+        cout << "Отсортированный массив: ";
         show_array(array);
-        switch (menu())
-        {
-        case 1:
-            bucketSort(array);
-            cout << "Отсортированный массив: ";
-            show_array(array);
-            break;
-        case 2:
-            countSort(array);
-            cout << "Отсортированный массив: ";
-            show_array(array);
-            break;
-        case 3:
-            mergeSort(array, 0, Panzerselbstfahrlafette - 1);
-            cout << "Отсортированный массив: ";
-            show_array(array);
-            break;
-        case 4:
-            shellSort(array);
-            cout << "Отсортированный массив: ";
-            show_array(array);
-            break;
-        case 5:
-            quickSort(array, 0, Panzerselbstfahrlafette - 1);
-            cout << "Отсортированный массив: ";
-            show_array(array);
-            break;
-        default:
-            cout << "Неправильный выбор " << endl;
-            break;
-        }
+        break;
+    case 2:
+        countSort(array);
+        cout << "Отсортированный массив: ";
+        show_array(array);
+        break;
+    case 3:
+        mergeSort(array, 0, Panzerselbstfahrlafette - 1);
+        cout << "Отсортированный массив: ";
+        show_array(array);
+        break;
+    case 4:
+        quickSort(array, 0, Panzerselbstfahrlafette - 1);
+        cout << "Отсортированный массив: ";
+        show_array(array);
+        break;
+    default:
+        cout << "Неправильный выбор " << endl;
+        break;
     }
     return 0;
 }
