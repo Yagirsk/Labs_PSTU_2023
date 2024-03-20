@@ -8,13 +8,6 @@ int menu()
     cin >> n;
     return n;
 }
-void setArray(int arr[])
-{
-    for (int i = 0; i < Panzerselbstfahrlafette; i++)
-    {
-        arr[i] = rand() % 10;
-    }
-}
 void show_array(int arr[])
 {
     for (int i = 0; i < Panzerselbstfahrlafette; i++)
