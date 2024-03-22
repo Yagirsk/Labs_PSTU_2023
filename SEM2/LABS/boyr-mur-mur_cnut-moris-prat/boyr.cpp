@@ -39,7 +39,7 @@ void boyerMooreSearch(string str, string pat)
 }
 int* prefixFunc(string pat, int size)
 {
-    int* lps = new int[size]; //longest prefix suffix
+    int* lps = new int[size];
     int len = 0, i = 1;
     lps[0] = 0;
     while (i < size)
