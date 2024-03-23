@@ -232,11 +232,11 @@ int main()
 
 # 4) Тесты
 
-<image src ="">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/изображение_2024-03-24_015806882.png">
 
-<image src ="">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/изображение_2024-03-24_015801599.png">
 
-<image src ="">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/изображение_2024-03-24_015755212.png">
 
-<image src ="">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/изображение_2024-03-24_015743532.png">
 
