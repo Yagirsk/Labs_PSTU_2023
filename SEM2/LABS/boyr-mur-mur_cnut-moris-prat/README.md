@@ -146,10 +146,8 @@ int main()
 
 # 4) Тесты
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/изображение_2024-03-24_015806882.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/boyr-mur-mur_cnut-moris-prat/images/изображение_2024-03-24_021140915.png">
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/изображение_2024-03-24_015801599.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/boyr-mur-mur_cnut-moris-prat/images/изображение_2024-03-24_021145203.png">
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/изображение_2024-03-24_015755212.png">
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/изображение_2024-03-24_015743532.png">
