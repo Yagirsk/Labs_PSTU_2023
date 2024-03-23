@@ -5,188 +5,118 @@
 # 2) Код программы
 
 ```cpp
-#include <iostream>
+﻿#include <iostream>
 using namespace std;
-const int Panzerselbstfahrlafette = 25;
-int menu()
+const int CHAR_NUM = 256;
+void calcCharTable(string str, int size, int charTable[CHAR_NUM])
 {
-    cout << "1 - сортировка ведрами(карманами)\n" << "2 - сортировка подсчетом\n" << "3 - сортировка слиянием\n" << "4 - быстрая сортировка\n" << "Введите цифру соответствующую тому какой метод сортировки будет использован: ";
-    int n;
-    cin >> n;
-    return n;
-}
-void show_array(int arr[])
-{
-    for (int i = 0; i < Panzerselbstfahrlafette; i++)
+    for (int i = 0; i < CHAR_NUM; i++)
     {
-        cout << arr[i] << " ";
+        charTable[i] = -1;
     }
-    cout << endl;
-}
-void bucketSort(int arr[])
-{
-    const int BUCKET_NUM = 10;
-    const int BUCKET_SIZE = 10;
-
-    int buckets[BUCKET_NUM][BUCKET_SIZE];
-
-    int bucketSizes[BUCKET_NUM] = { 0 };
-    for (int i = 0; i < Panzerselbstfahrlafette; i++)
+    for (int i = 0; i < size; i++)
     {
-        int bucketIndex = arr[i] / BUCKET_NUM;
-        buckets[bucketIndex][bucketSizes[bucketIndex]] = arr[i];
-        bucketSizes[bucketIndex]++;
+        charTable[(int)str[i]] = i;
     }
-    for (int i = 0; i < BUCKET_NUM; i++)
+}
+void boyerMooreSearch(string str, string pat)
+{
+    int str_size = str.size();
+    int pat_size = pat.size();
+    int shift_table[CHAR_NUM];
+    calcCharTable(str, pat_size, shift_table);
+    int shift = 0;
+    while (shift <= (str_size - pat_size))
     {
-        for (int j = 0; j < bucketSizes[i]; j++)
+        int j = pat_size - 1;
+        while (j >= 0 && pat[j] == str[shift + j]) { j--; }
+        if (j < 0)
         {
-            int tmp = buckets[i][j];
-            int k = j - 1;
-            while (k >= 0 && buckets[i][k] > tmp)
-            {
-                buckets[i][k + 1] = buckets[i][k];
-                k--;
-            }
-            buckets[i][k + 1] = tmp;
+            cout << "Паттерн найден на позиции " << shift + 1 << endl;
+            if (shift + pat_size < str_size)
+                shift += pat_size - shift_table[(int)str[shift + pat_size]];
+            else
+                shift++;
         }
-    }
-    int idx = 0;
-    for (int i = 0; i < BUCKET_NUM; i++)
-    {
-        for (int j = 0; j < bucketSizes[i]; j++)
-        {
-            arr[idx++] = buckets[i][j];
-        }
-    }
-}
-void countSort(int arr[])
-{
-    int *output= new int[Panzerselbstfahrlafette];
-    int* count;
-    int max = arr[0];
-    for (int i = 0; i < Panzerselbstfahrlafette; i++)
-    {
-        if (arr[i] > max) { max = arr[i]; }
-    }
-
-    count = new int[max + 1];
-    for (int i = 0; i <= max; ++i) { count[i] = 0; }
-
-    for (int i = 0; i < Panzerselbstfahrlafette; i++) count[arr[i]]++;
-    for (int i = 1; i <= max; i++)
-    {
-        count[i] += count[i - 1];
-    }
-
-    for (int i = Panzerselbstfahrlafette - 1; i >= 0; i--)
-    {
-        output[count[arr[i]] - 1] = arr[i];
-        count[arr[i]]--;
-    }
-    for (int i = 0; i < Panzerselbstfahrlafette; i++) arr[i] = output[i];
-
-    delete[] count;
-}
-void merge(int arr[], int start, int mid, int end)
-{
-    int n1 = mid - start + 1;
-    int n2 = end - mid;
-    int* left = new int[n1];
-    int* right = new int[n2];
-
-    for (int i = 0; i < n1; i++)
-        left[i] = arr[start + i];
-    for (int j = 0; j < n2; j++)
-        right[j] = arr[mid + 1 + j];
-
-    int i = 0, j = 0, k = start;
-    while (i < n1 && j < n2)
-    {
-        if (left[i] <= right[j])
-            arr[k++] = left[i++];
         else
-            arr[k++] = right[j++];
-    }
-    while (i < n1)
-        arr[k++] = left[i++];
-
-    while (j < n2)
-        arr[k++] = right[j++];
-
-    delete[] left;
-    delete[] right;
-}
-void mergeSort(int arr[], int start, int end)
-{
-    if (start < end)
-    {
-        int mid = start + (end - start) / 2;
-
-        mergeSort(arr, start, mid);
-        mergeSort(arr, mid + 1, end);
-
-        merge(arr, start, mid, end);
-    }
-}
-int partition(int arr[], int low, int high)
-{
-    int pivot = arr[high];
-    int i = low - 1;
-    for (int j = low; j <= high - 1; j++)
-    {
-        if (arr[j] <= pivot)
         {
-            i++;
-            swap(arr[i], arr[j]);
+            shift += max(1, j - shift_table[(int)str[shift + j]]);
         }
     }
-    swap(arr[i + 1], arr[high]);
-    return (i + 1);
 }
-void quickSort(int arr[], int low, int high)
+int* prefixFunc(string pat, int size)
 {
-    if (low < high)
+    int* lps = new int[size];
+    int len = 0, i = 1;
+    lps[0] = 0;
+    while (i < size)
     {
-        int pI = partition(arr, low, high);
-        quickSort(arr, low, pI - 1);
-        quickSort(arr, pI + 1, high);
+        if (pat[i] == pat[len])
+        {
+            lps[i] = len;
+            len++;
+            i++;
+        }
+        else
+        {
+            if (len != 0) { len = lps[len - 1]; }
+            else
+            {
+                lps[i] = 0;
+                i++;
+            }
+        }
+    }
+    return lps;
+}
+void KMPsearch(string str, string pat)
+{
+    int str_size = str.size();
+    int pat_size = pat.size();
+    int* lps = prefixFunc(pat, pat_size);
+    int str_idx = 0;
+    int pat_idx = 0;
+    while ((str_size - str_idx) >= (pat_size - pat_idx))
+    {
+        if (pat[pat_idx] == str[str_idx])
+        {
+            str_idx++;
+            pat_idx++;
+        }
+        if (pat_idx == pat_size)
+        {
+            cout << "Паттерн найден на позиции " << str_idx - pat_idx + 1 << endl;
+            pat_idx = lps[pat_idx - 1];
+        }
+        else if (str_idx < str_size && pat[pat_idx] != str[str_idx])
+        {
+            if (pat_idx != 0) { pat_idx = lps[pat_idx - 1]; }
+            else { str_idx++; }
+        }
     }
 }
 int main()
 {
     setlocale(LC_ALL, "ru_RU");
-    int* array = new int[Panzerselbstfahrlafette];
-    for (int i = 0; i < Panzerselbstfahrlafette; i++) { array[i] = rand() % 10; }
-    cout << "Исходный массив: ";
-    show_array(array);
-    switch (menu())
+    string str, pat;
+    cout << "Введите строку в которой будет происхожить поиск\n";
+    cin >> str;
+    cout << "Введти паттерн который будет искаться\n";
+    cin >> pat;
+    cout << "1 - бойра мура\n2 - КМП\nВведите цифру которая бдует соответствовать поиску которых нужно применить: ";
+    int n;
+    cin >> n;
+    switch (n)
     {
     case 1:
-        bucketSort(array);
-        cout << "Отсортированный массив: ";
-        show_array(array);
+        boyerMooreSearch(str, pat);
         break;
     case 2:
-        countSort(array);
-        cout << "Отсортированный массив: ";
-        show_array(array);
+        KMPsearch(str, pat);
         break;
-    case 3:
-        mergeSort(array, 0, Panzerselbstfahrlafette - 1);
-        cout << "Отсортированный массив: ";
-        show_array(array);
-        break;
-    case 4:
-        quickSort(array, 0, Panzerselbstfahrlafette - 1);
-        cout << "Отсортированный массив: ";
-        show_array(array);
-        break;
-    default:
-        cout << "Неправильный выбор " << endl;
-        break;
+    default: 
+        cout << "Неправильный выбор";
     }
-    return 0;
 }
 ```
 
