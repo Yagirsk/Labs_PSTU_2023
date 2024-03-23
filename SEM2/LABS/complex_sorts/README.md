@@ -218,7 +218,7 @@ int main()
 
 Функция menu
 
-<image src ="">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/compl_sort_menu.drawio.png">
 
 Функция bucketSort
 
@@ -232,6 +232,11 @@ int main()
 
 # 4) Тесты
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/test1.png">
+<image src ="">
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/test2.png">
+<image src ="">
+
+<image src ="">
+
+<image src ="">
+
