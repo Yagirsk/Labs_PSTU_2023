@@ -123,39 +123,24 @@ int main()
 
 Функция main
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/compl_sort_main.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/boyr-mur-mur_cnut-moris-prat/images/mur-mur_main.drawio.png">
 
-Функция quickSort
+Функция KMPsearch
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/sortir_quick.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/boyr-mur-mur_cnut-moris-prat/images/mur-mur_kmp.drawio.png">
 
-Функция partition
+Функция boyerMooreSearch
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/sortir_parti.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/boyr-mur-mur_cnut-moris-prat/images/mur-mur_boyr.drawio.png">
 
-Функция mergeSort
+Функция calcCharTable
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/sortir_mergesort.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/boyr-mur-mur_cnut-moris-prat/images/mur-mur_clac_char.drawio.png">
 
-Функция merge
+Функция prefixFunc
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/sortir_merge.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/boyr-mur-mur_cnut-moris-prat/images/mur-mur_prefFunc.drawio.png">
 
-Функция countSort
-
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/sortir_count.drawio.png">
-
-Функция menu
-
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/compl_sort_menu.drawio.png">
-
-Функция bucketSort
-
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/compl_sort_buck.drawio.png">
-
-Функция show_array
-
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/sortir_show.drawio.png">
 
 
 
