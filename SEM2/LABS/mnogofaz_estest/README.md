@@ -138,48 +138,41 @@ int main()
 
 Функция main
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/compl_sort_main.drawio.png">
-
-Функция quickSort
-
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/sortir_quick.drawio.png">
-
-Функция partition
-
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/sortir_parti.drawio.png">
-
-Функция mergeSort
-
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/sortir_mergesort.drawio.png">
-
-Функция merge
-
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/sortir_merge.drawio.png">
-
-Функция countSort
-
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/sortir_count.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/mnogofaz_estest/images/2_sort_main.drawio.png">
 
 Функция menu
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/compl_sort_menu.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/mnogofaz_estest/images/2_sort_menu.drawio.png">
 
-Функция bucketSort
+Функция multiPhaseSort
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/compl_sort_buck.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/mnogofaz_estest/images/2_sort_mf_sort.drawio.png">
 
-Функция show_array
+Функция MergePass
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/sortir_show.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/mnogofaz_estest/images/2_sort_mergePass.drawio.png">
+
+Функция MergeSort
+
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/mnogofaz_estest/images/2_sort_mergeSort.drawio.png">
+
+Функция Merge
+
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/mnogofaz_estest/images/2_sort_merge.drawio.png">
+
+Функция GetBPoint
+
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/mnogofaz_estest/images/2_sort_getB.drawio.png">
+
+Функция yae
+
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/mnogofaz_estest/images/2_sort_yae.drawio.png">
 
 
 
 # 4) Тесты
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/изображение_2024-03-24_015806882.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/mnogofaz_estest/images/изображение_2024-03-24_021920150.png">
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/изображение_2024-03-24_015801599.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/mnogofaz_estest/images/изображение_2024-03-24_021924470.png">
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/изображение_2024-03-24_015755212.png">
-
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/изображение_2024-03-24_015743532.png">
