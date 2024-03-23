@@ -65,22 +65,22 @@ int main()
 
 Функция main
 
-<image src ="">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/hoar/images/hoar_main.drawio.png">
 
 Функция partition
 
-<image src ="">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/hoar/images/hoar_parti.drawio.png">
 
 Функция quickSort
 
-<image src ="">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/hoar/images/hoar_quickS.drawio.png">
 
 Функция showArray
 
-<image src ="">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/hoar/images/sortir_show.drawio.png">
 
 
 
 # 4) Тесты
 
-<image src ="">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/hoar/images/изображение_2024-03-24_035738654.png">
