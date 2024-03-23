@@ -1,217 +1,190 @@
 # 1) Задание 
 
-Лабораторная работа №11, вариант 6
-
-Записи в стеке содержат ключевое поле типа
-int.
-1. Написать функцию для создания списка. Функция может
-создавать пустой стек, а затем добавлять в него
-элементы.
-2. Написать функцию для печати стека. Функция должна
-предусматривать вывод сообщения, если стек пустой.
-3.  Сформировать стек. Удалить из
-него элемент с заданным номером, добавить элемент в
-начало списка.
-4. Выполнить изменения в стеке и печать стека после
-каждого изменения.
-5. Написать функцию для записи списка в файл.
-6. Написать функцию для уничтожения стека.
-7. Записать стек в файл, уничтожить его и выполнить
-печать (при печати должно быть выдано сообщение "стек
-пустой").
-8. Написать функцию для восстановления стека из файла.
-9. Восстановить стек и распечатать его.
-10. Уничтожить стек.
+Осортировать массив сортировкой ведрами, сортировкой слиянием, быстрой сортировкой по Ломуто, сортировкой подсчетом
 
 # 2) Код программы
 
 ```cpp
 #include <iostream>
-#include <fstream>
-#include <string>
 using namespace std;
-struct StackElem
+const int Panzerselbstfahrlafette = 25;
+int menu()
 {
-    int data;
-    StackElem* next;
-};
-struct Stack
-{
-    StackElem* top;
-    int size;
-    void init()
-    {
-        top = nullptr;
-        size = 0;
-    }
-    void push(int data)
-    {
-        StackElem* cur = new StackElem;
-        cur->data = data;
-        cur->next = top;
-        top = cur;
-        size++;
-    }
-    int pop()
-    {
-        int value = top->data;
-        StackElem* tmp = top;
-        top = top->next;
-        size--;
-        delete tmp;
-        return value;
-    }
-    StackElem* topElem()
-    {
-        return top;
-    }
-};
-Stack create_stack (int size)
-{
-    Stack stack{ };
-    stack.init();
-    int data, counter = 1;
-    for (int i = 0; i < size; i++)
-    {
-        cout << "Введите элемент №" << counter++ << " ";
-        cin >> data;
-        stack.push(data);
-    }
-    return stack;
+    cout << "1 - сортировка ведрами(карманами)\n" << "2 - сортировка подсчетом\n" << "3 - сортировка слиянием\n" << "4 - быстрая сортировка\n" << "Введите цифру соответствующую тому какой метод сортировки будет использован: ";
+    int n;
+    cin >> n;
+    return n;
 }
-void showStack(Stack &stack)
+void show_array(int arr[])
 {
-    if (stack.top == nullptr)
+    for (int i = 0; i < Panzerselbstfahrlafette; i++)
     {
-        cout << "Стек пуст\n";
-        return;
-    }
-    cout << "Стек: ";
-    Stack tmpStack{ };
-    tmpStack.init();
-    while (stack.topElem() != nullptr)
-    {
-        int data = stack.pop();
-        tmpStack.push(data);
-    }
-    while (tmpStack.topElem() != nullptr)
-    {
-        int data = tmpStack.pop();
-        cout << data << " ";
-        stack.push(data);
+        cout << arr[i] << " ";
     }
     cout << endl;
 }
-void StackExtermination (Stack& stack)
+void bucketSort(int arr[])
 {
-    StackElem* current = stack.top;
-    while (current != nullptr)
+    const int BUCKET_NUM = 10;
+    const int BUCKET_SIZE = 10;
+
+    int buckets[BUCKET_NUM][BUCKET_SIZE];
+
+    int bucketSizes[BUCKET_NUM] = { 0 };
+    for (int i = 0; i < Panzerselbstfahrlafette; i++)
     {
-        StackElem* temp = current;
-        current = current->next;
-        delete temp;
+        int bucketIndex = arr[i] / BUCKET_NUM;
+        buckets[bucketIndex][bucketSizes[bucketIndex]] = arr[i];
+        bucketSizes[bucketIndex]++;
     }
-    stack.top = nullptr;
-    stack.size = 0;
-    cout << "Стек удален\n";
+    for (int i = 0; i < BUCKET_NUM; i++)
+    {
+        for (int j = 0; j < bucketSizes[i]; j++)
+        {
+            int tmp = buckets[i][j];
+            int k = j - 1;
+            while (k >= 0 && buckets[i][k] > tmp)
+            {
+                buckets[i][k + 1] = buckets[i][k];
+                k--;
+            }
+            buckets[i][k + 1] = tmp;
+        }
+    }
+    int idx = 0;
+    for (int i = 0; i < BUCKET_NUM; i++)
+    {
+        for (int j = 0; j < bucketSizes[i]; j++)
+        {
+            arr[idx++] = buckets[i][j];
+        }
+    }
 }
-void DelElem (Stack& stack, int num)
+void countSort(int arr[])
 {
-    if (num > stack.size)
+    int *output= new int[Panzerselbstfahrlafette];
+    int* count;
+    int max = arr[0];
+    for (int i = 0; i < Panzerselbstfahrlafette; i++)
     {
-        cout << "erroe\n";
-        return;
+        if (arr[i] > max) { max = arr[i]; }
     }
-    int tmpSize = stack.size - num;
-    Stack tmpStack{ };
-    tmpStack.init();
-    for (int i = 0; i < tmpSize; i++)
+
+    count = new int[max + 1];
+    for (int i = 0; i <= max; ++i) { count[i] = 0; }
+
+    for (int i = 0; i < Panzerselbstfahrlafette; i++) count[arr[i]]++;
+    for (int i = 1; i <= max; i++)
     {
-        int data = stack.pop();
-        tmpStack.push(data);
+        count[i] += count[i - 1];
     }
-    StackElem* tmps = stack.topElem();
-    stack.top = stack.top->next;
-    delete tmps;
-    for (int i = 0; i < tmpSize; i++)
+
+    for (int i = Panzerselbstfahrlafette - 1; i >= 0; i--)
     {
-        int data = tmpStack.pop();
-        stack.push(data);
+        output[count[arr[i]] - 1] = arr[i];
+        count[arr[i]]--;
     }
-    stack.size--;
+    for (int i = 0; i < Panzerselbstfahrlafette; i++) arr[i] = output[i];
+
+    delete[] count;
 }
-void addElem (Stack& stack)
+void merge(int arr[], int start, int mid, int end)
 {
-    Stack tmpStack{ };
-    tmpStack.init();
-    int sizer = stack.size;
-    for (int i = 0; i < sizer; i++)
+    int n1 = mid - start + 1;
+    int n2 = end - mid;
+    int* left = new int[n1];
+    int* right = new int[n2];
+
+    for (int i = 0; i < n1; i++)
+        left[i] = arr[start + i];
+    for (int j = 0; j < n2; j++)
+        right[j] = arr[mid + 1 + j];
+
+    int i = 0, j = 0, k = start;
+    while (i < n1 && j < n2)
     {
-        int data = stack.pop();
-        tmpStack.push(data);
+        if (left[i] <= right[j])
+            arr[k++] = left[i++];
+        else
+            arr[k++] = right[j++];
     }
-    int newData;
-    cout << "Введите значение нового элемента который станет на первую позицию: ";
-    cin >> newData;
-    stack.push(newData);
-    while (tmpStack.top != nullptr)
-    {
-        int data = tmpStack.pop();
-        stack.push(data);
-    }
-    stack.size++;
+    while (i < n1)
+        arr[k++] = left[i++];
+
+    while (j < n2)
+        arr[k++] = right[j++];
+
+    delete[] left;
+    delete[] right;
 }
-void saver (Stack& stack)
+void mergeSort(int arr[], int start, int end)
 {
-    ofstream file("F.txt");
-    while (stack.top != nullptr)
+    if (start < end)
     {
-        int data = stack.pop();
-        file << data << endl;
+        int mid = start + (end - start) / 2;
+
+        mergeSort(arr, start, mid);
+        mergeSort(arr, mid + 1, end);
+
+        merge(arr, start, mid, end);
     }
-    file.close();
-    cout << "Стек сохранен\n";
 }
-void RetuneStackToTheTrueGlory(Stack& stack)
+int partition(int arr[], int low, int high)
 {
-    ifstream file("F.txt");
-    Stack tmpStack{ };
-    tmpStack.init();
-    string tmpStr;
-    while (getline(file, tmpStr))
+    int pivot = arr[high];
+    int i = low - 1;
+    for (int j = low; j <= high - 1; j++)
     {
-        int data = stoi(tmpStr);
-        tmpStack.push(data);
+        if (arr[j] <= pivot)
+        {
+            i++;
+            swap(arr[i], arr[j]);
+        }
     }
-    while (tmpStack.top != nullptr)
+    swap(arr[i + 1], arr[high]);
+    return (i + 1);
+}
+void quickSort(int arr[], int low, int high)
+{
+    if (low < high)
     {
-        int data = tmpStack.pop();
-        stack.push(data);
+        int pI = partition(arr, low, high);
+        quickSort(arr, low, pI - 1);
+        quickSort(arr, pI + 1, high);
     }
-    file.close();
-    cout << "Стек восстановлен\n";
 }
 int main()
 {
     setlocale(LC_ALL, "ru_RU");
-    int size;
-    cout << "Введите количество элементов в стеке: ";
-    cin >> size;
-    Stack steck = create_stack(size);
-    showStack(steck);
-    if (steck.top != nullptr)
+    int* array = new int[Panzerselbstfahrlafette];
+    for (int i = 0; i < Panzerselbstfahrlafette; i++) { array[i] = rand() % 10; }
+    cout << "Исходный массив: ";
+    show_array(array);
+    switch (menu())
     {
-        int num;
-        cout << "Введите номер элемента который будет удален: ";
-        cin >> num;
-        DelElem(steck, num);
-        showStack(steck);
-        addElem(steck);
-        showStack(steck);
-        saver(steck);
-        StackExtermination(steck); // необязательно т.к. после saver стек уже пуст, но пусть будет
-        RetuneStackToTheTrueGlory(steck);
-        showStack(steck);
+    case 1:
+        bucketSort(array);
+        cout << "Отсортированный массив: ";
+        show_array(array);
+        break;
+    case 2:
+        countSort(array);
+        cout << "Отсортированный массив: ";
+        show_array(array);
+        break;
+    case 3:
+        mergeSort(array, 0, Panzerselbstfahrlafette - 1);
+        cout << "Отсортированный массив: ";
+        show_array(array);
+        break;
+    case 4:
+        quickSort(array, 0, Panzerselbstfahrlafette - 1);
+        cout << "Отсортированный массив: ";
+        show_array(array);
+        break;
+    default:
+        cout << "Неправильный выбор " << endl;
+        break;
     }
     return 0;
 }
@@ -221,59 +194,40 @@ int main()
 
 Функция main
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_main_v2.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/compl_sort_main.drawio.png">
 
-Функция create_stack
+Функция quickSort
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/ts_create.drawio.png">
-    
-Функция showStack
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/sortir_quick.drawio.png">
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_show.drawio.png">
+Функция partition
 
-Функция StackExtermination
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/sortir_parti.drawio.png">
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_exterm.drawio.png">
+Функция mergeSort
 
-Функция DelElem
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/sortir_mergesort.drawio.png">
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_delEl.drawio.png">
+Функция merge
 
-Функция RetuneStackToTheTrueGlory
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/sortir_merge.drawio.png">
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_trueGlory.drawio.png">
+Функция countSort
 
-Функция saver
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/sortir_count.drawio.png">
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_svaer.drawio.png">
+Функция menu
 
-Функция addElem
+<image src ="">
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_add.drawio.png">
+Функция bucketSort
 
-Структура StackElem
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/compl_sort_buck.drawio.png">
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_stackEl.drawio.png">
+Функция show_array
 
-Структура Stack
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/complex_sorts/images/sortir_show.drawio.png">
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_structStek.drawio.png">
-
-Метод init
-
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_met_init.drawio.png">
-
-Метод push
-
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_met_push.drawio.png">
-
-Метод pop
-
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_met_pop.drawio.png">
-
-Метод topElem
-
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/11_ZEL/stek/images/st_met_topEl.drawio.png">
 
 
 # 4) Тесты
