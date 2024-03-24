@@ -42,6 +42,7 @@ void linear_s(int arr[], int siz, int key)
 }
 void interpolating_search(int arr[], int sze, int key) 
 {
+	if (arr[0] == key) { cout << "Ключ найден на позиции: 1" << endl; }
 	int low = 0;
 	int high = sze - 1;
 	int mid;
