@@ -1,63 +1,145 @@
 # 1) Задание 
 
-Отсортировать массив быстрой сортировкой по Хоару
+Реализовать линейный, интерполяционный и бинарный посики
 
 # 2) Код программы
 
 ```cpp
 ﻿#include <iostream>
 using namespace std;
-const int panzerkampfwagenVI = 25;
-void showArray(int arr[])
+int menu1()
 {
-    for (int i = 0; i < panzerkampfwagenVI; i++) { cout << arr[i] << " "; }
-    cout << endl;
+	int type;
+	cout << "1 - задать массив упорядоченный по возрастанию (линейный поиск)\n2 - задать массив не упорядоченный по возрастанию (интерполяционный и бинарный поиск)\nВведите цифру соответствующую тому как задать массив: ";
+	cin >> type;
+	return type;
 }
-int partition(int arr[], int low, int high)
+int menu2()
 {
-    int pivot = arr[low];
-    int num = 0;
-
-    for (int i = low + 1; i <= high; i++)
-    {
-        if (arr[i] < pivot) { num++; }
-    }
-
-    int pos = low + num;
-
-    swap(arr[pos], arr[low]);
-
-    int i = low, j = high;
-    while (i < pos && j > pos)
-    {
-        while (arr[i] < pivot) i++;
-        while (arr[j] > pivot) j--;
-
-        if (i < pos && j > pos)
-        {
-            swap(arr[i++], arr[j--]);
-        }
-    }
-    return pos;
+	int type;
+	cout << "1 - интерполяционный поиск\n2 - бинарный поиск\nВведите цифру соответствующую тому какой метод поиска использовать: ";
+	cin >> type;
+	return type;
 }
-void quickSort(int arr[], int low, int high)
+void print_array(int arr[], int zise)
 {
-    if (low >= high) return;
-    int pI = partition(arr, low, high);
-    quickSort(arr, low, pI - 1);
-    quickSort(arr, pI + 1, high);
+	cout << "Массив: ";
+	for (int i = 0; i < zise; i++) { cout << arr[i] << " ";}
+	cout << endl;
+}
+void linear_s(int arr[], int siz, int key)
+{
+	int* tmp = new int[0];
+	int tmp_size = 0;
+	for (int i = 0; i < siz; i++)
+	{
+		if (arr[i] == key)
+		{
+			tmp[tmp_size++] = i;
+		}
+	}
+	if (tmp_size != 0)
+	{
+		for (int j = 0; j < tmp_size; j++)
+		{
+			cout << "Ключ найден на позиции: " << tmp[j] + 1 << endl;
+		}
+	}
+	else { cout << "Элемент не найден\n"; }
+}
+void interpolating_search(int arr[], int sze, int key) 
+{
+	if (arr[0] == key) { cout << "Ключ найден на позиции: 1" << endl; return;}
+	int low = 0;
+	int high = sze - 1;
+	int mid;
+	int key_place = - 1;
+	while (arr[low] < key && arr[high] >= key)
+	{
+		mid = low + ((key - arr[low]) * (high - low)) / (arr[high] - arr[low]);
+		if (arr[mid] == key) { key_place = mid + 1; break; }
+		else if (arr[mid] < key) { low = mid + 1; }
+		else if (arr[mid] > key) { high = mid - 1; }
+	}
+	if (key_place != -1) 
+	{
+		cout << "Ключ найден на позиции: " << key_place << endl;
+	}
+	else 
+	{
+		cout << "Ключ не найден" << endl;
+	}
+}
+void binary_search(int arr[], int sze, int key) {
+	int low = 0;
+	int high = sze - 1;
+	while (low <= high) 
+	{
+		int mid = low + (high - low) / 2;
+
+		if (arr[mid] == key)
+		{
+			cout << "Ключ найден на позиции: " << mid + 1 << endl;
+			break;
+		}
+		else if (arr[mid] < key) 
+		{
+			low = mid + 1;
+		}
+		else {
+			high = mid - 1;
+		}
+	}
 }
 int main()
 {
-    setlocale(LC_ALL, "ru_RU");
-	int Wehrmacht[panzerkampfwagenVI];
-	for (int i = 0; i < panzerkampfwagenVI; i++) { Wehrmacht[i] = rand() % 10; }
-	cout << "Исходный массив\n";
-    showArray(Wehrmacht);
-    quickSort(Wehrmacht, 0, panzerkampfwagenVI - 1);
-	cout << "Отсортированныйй массив\n";
-    showArray(Wehrmacht);
-    return 0;
+	setlocale(LC_ALL, "ru_RU");
+	string endt;
+	cout << "Введите 'Panzerselbstfahrlafette' если хотите прекратить работу программы: ";
+	cin >> endt;
+	if (endt == "Panzerselbstfahrlafette") { return 0; }
+
+	int type_set_arr = menu1();
+	if (type_set_arr == 1)
+	{
+		int size, key;
+		cout << "Введите длинну массива: ";
+		cin >> size;
+		int* array = new int[size];
+		for (int i = 0; i < size; i++) { array[i] = rand() % 21; }
+		print_array(array, size);
+		cout << "Введите значение которое надо искать: ";
+		cin >> key;
+		linear_s(array, size, key);
+	}
+
+	else if (type_set_arr == 2)
+	{
+		int size, key, tmp = 0;
+		cout << "Введите длинну массива: ";
+		cin >> size;
+		int* array = new int[size];
+		for (int i = 0; i < size; i++) 
+		{
+			tmp += rand() % 3 + 1;
+			array[i] = tmp;
+		}
+
+		print_array(array, size);
+		cout << "Введите значение которое надо искать: ";
+		cin >> key;
+		cout << "\n\n";
+		int type_search = menu2();
+
+		if (type_search == 1) { interpolating_search(array, size, key); }
+		else if (type_search == 2) { binary_search(array, size, key); }
+		else { cout << "Неправильный выбор"; }
+
+	}
+	else { cout << "Неправильный выбор"; }
+
+	system("pause");
+	main();
 }
 ```
 
@@ -65,22 +147,34 @@ int main()
 
 Функция main
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/hoar/images/hoar_main.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/SEARCH_3/images/3_sear_main.drawio.png">
 
-Функция partition
+Функция menu1
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/hoar/images/hoar_parti.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/SEARCH_3/images/3_sear_menu1.drawio.png">
 
-Функция quickSort
+Функция menu2
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/hoar/images/hoar_quickS.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/SEARCH_3/images/3_sear_menu2.drawio.png">
 
-Функция showArray
+Функция print_array
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/hoar/images/sortir_show.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/SEARCH_3/images/3_sear_print.drawio.png">
+
+Функция binary_search
+
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/SEARCH_3/images/3_sear_binSort.drawio.png">
+
+Функция interpolating_search
+
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/SEARCH_3/images/3_sear_interp.drawio.png">
+
+Функция linear_s
+
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/SEARCH_3/images/3_sear_linSort.drawio.png">
 
 
 
 # 4) Тесты
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/hoar/images/изображение_2024-03-24_035738654.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/SEARCH_3/images/изображение_2024-03-24_225149280.png">
