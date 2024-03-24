@@ -17,7 +17,7 @@ int menu2()
 void print_array(int arr[], int zise)
 {
 	cout << "Массив: ";
-	for (int i = 0; i < zise; i++) { cout << arr[i] << " "; }
+	for (int i = 0; i < zise; i++) { cout << arr[i] << " ";}
 	cout << endl;
 }
 void linear_s(int arr[], int siz, int key)
@@ -42,7 +42,7 @@ void linear_s(int arr[], int siz, int key)
 }
 void interpolating_search(int arr[], int sze, int key) 
 {
-	if (arr[0] == key) { cout << "Ключ найден на позиции: 1" << endl; }
+	if (arr[0] == key) { cout << "Ключ найден на позиции: 1" << endl; return}
 	int low = 0;
 	int high = sze - 1;
 	int mid;
