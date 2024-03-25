@@ -98,7 +98,7 @@ int menu()
     cin >> n;
     return n;
 }
-void yae(int arr[])
+void yae(int arr[]) // вывод в консоль
 {
     for (int i = 0; i < Panzerselbstfahrlafette; i++)
     {
