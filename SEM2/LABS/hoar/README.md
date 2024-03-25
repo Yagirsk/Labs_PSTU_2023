@@ -51,7 +51,7 @@ int main()
 {
     setlocale(LC_ALL, "ru_RU");
 	int Wehrmacht[panzerkampfwagenVI];
-	for (int i = 0; i < panzerkampfwagenVI; i++) { Wehrmacht[i] = rand() % 10; }
+	for (int i = 0; i < panzerkampfwagenVI; i++) { Wehrmacht[i] = rand() % 100; }
 	cout << "Исходный массив\n";
     showArray(Wehrmacht);
     quickSort(Wehrmacht, 0, panzerkampfwagenVI - 1);
@@ -83,4 +83,4 @@ int main()
 
 # 4) Тесты
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/hoar/images/изображение_2024-03-24_035738654.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/hoar/images/изображение_2024-03-25_160237391.png">
