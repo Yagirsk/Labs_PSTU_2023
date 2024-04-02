@@ -37,8 +37,8 @@ money money::operator/(float m)
 istream& operator >>(istream& in, money& m)
 {
 	int tmp;
-	cout << "Ââåäèòå ğóáëè äëÿ ïåğåìåííîé " << varName << ": "; in >> m.rub;
-	cout << "Ââåäèòå êîïåéêè äëÿ ïåğåìåííîé " << varName << ": "; in >> tmp;
+	cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã°Ã³Ã¡Ã«Ã¨ Ã¤Ã«Ã¿ Ã¯Ã¥Ã°Ã¥Ã¬Ã¥Ã­Ã­Ã®Ã© " << varName << ": "; in >> m.rub;
+	cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ ÃªÃ®Ã¯Ã¥Ã©ÃªÃ¨ Ã¤Ã«Ã¿ Ã¯Ã¥Ã°Ã¥Ã¬Ã¥Ã­Ã­Ã®Ã© " << varName << ": "; in >> tmp;
 	if (tmp >= 100)
 	{
 		m.kop = tmp % 100;
