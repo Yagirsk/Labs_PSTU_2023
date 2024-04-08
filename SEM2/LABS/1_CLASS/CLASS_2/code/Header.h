@@ -17,6 +17,6 @@ public:
 	int get_RAM();
 	void set_RAM(int RAM_n);
 	int get_HDD();
-	void set_HDD(int RAM_n);
+	void set_HDD(int HDD_n);
 	void show();
 };
