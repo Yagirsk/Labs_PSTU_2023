@@ -18,7 +18,7 @@ int main()
 	cin >> mnozo;
 	Mnoz tmp = mnozvo * mnozo;
 	cout << tmp << endl;
-	cout << "Длинна множества mnozvo " << mnozvo();
+	cout << "Длинна множества mnozvo " << mnozvo() << endl;
 
 	cout << *(mnozvo.first()) << endl;
 	Iterator i = mnozvo.first();
