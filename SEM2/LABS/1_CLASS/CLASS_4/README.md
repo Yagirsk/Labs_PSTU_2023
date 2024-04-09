@@ -31,7 +31,7 @@
 
 ## Код программы
 
-~~~
+~~~cpp
 ﻿#include <iostream>
 #include "Pair.h"
 #include "rational.h"
@@ -66,7 +66,7 @@ int main()
 }
 ~~~
 
-~~~
+~~~cpp
 #pragma once
 #include <iostream>
 using namespace std;
@@ -100,7 +100,7 @@ protected:
 
 ~~~
 
-~~~
+~~~cpp
 #include "Pair.h"
 #pragma once
 Pair::Pair(void)
@@ -171,7 +171,7 @@ bool Pair::operator==(const Pair& p)
 
 ~~~
 
-~~~
+~~~cpp
 #pragma once
 #include "Pair.h"
 using namespace std;
@@ -197,7 +197,7 @@ protected:
 
 ~~~
 
-~~~
+~~~cpp
 #include "rational.h"
 rational::rational(void) :Pair()
 {
