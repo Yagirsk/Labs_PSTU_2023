@@ -20,25 +20,26 @@ money money::operator*(float m)
 }
 float money::operator/(const money& m)
 {
-	int tmp_1 = rub * 100 + kop;
-	int tmp_2 = m.rub * 100 + m.kop;
+	float tmp_1 = rub * 100 + kop;
+	float tmp_2 = m.rub * 100 + m.kop;
 	float p = tmp_1 / tmp_2;
 	return p;
 }
 money money::operator/(float m)
 {
-	int tmp_1 = rub * 100 + kop;
+	float tmp_1 = rub * 100 + kop;
 	money p;
-	tmp_1 / m;
-	p.rub = tmp_1 / 100;
-	p.kop = tmp_1 % 100;
+	tmp_1 /= m;
+	int t = tmp_1;
+	p.rub = t / 100;
+	p.kop = t % 100;
 	return p;
 }
-istream& operator >>(istream& in, money& m)
+istream& custom_input(istream& in, money& m, const char* name)
 {
 	int tmp;
-	cout << "Ââåäèòå ðóáëè äëÿ ïåðåìåííîé " << varName << ": "; in >> m.rub;
-	cout << "Ââåäèòå êîïåéêè äëÿ ïåðåìåííîé " << varName << ": "; in >> tmp;
+	cout << "Введите рубли для переменной " << name << ": "; in >> m.rub;
+	cout << "Введите копейки для переменной " << name << ": "; in >> tmp;
 	if (tmp >= 100)
 	{
 		m.kop = tmp % 100;
