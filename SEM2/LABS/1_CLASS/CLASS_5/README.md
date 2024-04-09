@@ -27,7 +27,7 @@
 
 ## Код программы
 
-~~~
+~~~cpp
 ﻿#include <iostream>
 #include "Pair.h"
 #include "Object.h"
@@ -74,7 +74,7 @@ int main()
 }
 ~~~
 
-~~~
+~~~cpp
 #pragma once
 class Object
 {
@@ -86,13 +86,13 @@ public:
 };
 ~~~
 
-~~~
+~~~cpp
 #include "Object.h"
 Object::Object(void){}
 Object::~Object(void) {}
 ~~~
 
-~~~
+~~~cpp
 #pragma once
 #include <iostream>
 #include "Object.h"
@@ -129,7 +129,7 @@ protected:
 
 ~~~
 
-~~~
+~~~cpp
 #include "Pair.h"
 Pair::Pair(void)
 {
@@ -205,7 +205,7 @@ void Pair::show()
 }
 ~~~
 
-~~~
+~~~cpp
 #pragma once
 #include "Pair.h"
 using namespace std;
@@ -232,7 +232,7 @@ protected:
 
 ~~~
 
-~~~
+~~~cpp
 #include "Rati.h"
 Rati::Rati(void) :Pair()
 {
@@ -291,7 +291,7 @@ void Rati::show()
 }
 ~~~
 
-~~~
+~~~cpp
 #pragma once
 #include "Object.h"
 #include <iostream>
@@ -311,7 +311,7 @@ private:
 };
 ~~~
 
-~~~
+~~~cpp
 #include "Vector.h"
 Vector::Vector(void)
 {
