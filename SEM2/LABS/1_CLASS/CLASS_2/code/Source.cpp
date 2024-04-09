@@ -7,25 +7,25 @@ PC::PC()
 	CPU = "";
 	RAM = 0;
 	HDD = 0;
-	cout << "Êîíñòðóêòîð áåç ïàðàìåòðîâ äëÿ îáúåêòà " << this << endl;
+	cout << "ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ Ð±ÐµÐ· Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¾Ð² Ð´Ð»Ñ Ð¾Ð±ÑŠÐµÐºÑ‚Ð° " << this << endl;
 }
 PC::PC(string s, int a, int b)
 {
 	CPU = s;
 	RAM = a;
 	HDD = b;
-	cout << "Êîíñòðóêòîð ñ ïàðàìåòðàìè äëÿ îáúåêòà " << this << endl;
+	cout << "ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ Ñ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð°Ð¼Ð¸ Ð´Ð»Ñ Ð¾Ð±ÑŠÐµÐºÑ‚Ð° " << this << endl;
 }
 PC::PC(const PC& t)
 {
 	CPU = t.CPU;
 	RAM = t.RAM;
 	HDD = t.HDD;
-	cout << "Êîíñòðóêòîð êîïèðîâàíèÿ äëÿ îáúåêòà " << this << endl;
+	cout << "ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ ÐºÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ Ð´Ð»Ñ Ð¾Ð±ÑŠÐµÐºÑ‚Ð° " << this << endl;
 }
 PC::~PC()
 {
-	cout << "Äåñòðóêòîð äëÿ îáúåêòà " << this << endl;
+	cout << "Ð”ÐµÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ Ð´Ð»Ñ Ð¾Ð±ÑŠÐµÐºÑ‚Ð° " << this << endl;
 }
 string PC::get_CPU()
 {
@@ -53,5 +53,5 @@ void PC::set_HDD(int HDD_n)
 }
 void PC::show()
 {
-	cout << "Íàçâàíèå ÖÏ: " << CPU << "\nRAM: " << RAM << "\nHDD: " << HDD << endl;
+	cout << "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¦ÐŸ: " << CPU << "\nRAM: " << RAM << "\nHDD: " << HDD << endl;
 }
