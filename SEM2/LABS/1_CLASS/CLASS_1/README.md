@@ -19,7 +19,7 @@
 
 ## Код программы
 
-~~~
+~~~cpp
 ﻿#include <iostream>
 #include <string>
 #include "Header.h"
@@ -63,7 +63,7 @@ int main()
 }
 ~~~
 
-~~~
+~~~cpp
 #ifndef HEADER_H
 #define HEADER_H
 
@@ -86,7 +86,7 @@ public:
 #endif
 ~~~
 
-~~~
+~~~cpp
 #include <iostream>
 #include <string>
 #include <sstream>
