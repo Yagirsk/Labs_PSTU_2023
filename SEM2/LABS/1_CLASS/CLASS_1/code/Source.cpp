@@ -1,9 +1,9 @@
+//👍🏻
 #include <iostream>
 #include <string>
 #include <sstream>
 #include "Header.h"
 using namespace std;
-setlocale(LC_ALL, "ru_RU");
 void linear_ur::init()
 {
 	y = 0;
