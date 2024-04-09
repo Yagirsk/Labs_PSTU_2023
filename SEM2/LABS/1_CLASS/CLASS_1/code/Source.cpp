@@ -1,61 +1,57 @@
 #include <iostream>
 #include <string>
-#include <sstream>
 #include "Header.h"
 using namespace std;
-void linear_ur::init()
+PC::PC()
 {
-	y = 0;
-	x = 0;
-	B = 0;
-	A = 0;
-	r = 1;
+	CPU = "";
+	RAM = 0;
+	HDD = 0;
+	cout << "Конструктор без параметров для объекта " << this << endl;
 }
-void linear_ur::read()
+PC::PC(string s, int a, int b)
 {
-	//r = 1;
-	string A_r, B_r;
-	cout << "������� ����������� A � B ��������������: ";
-	cin >> A_r;
-	cin >> B_r;
-	if (isFloat(A_r))
-	{
-		A = stof(A_r);
-	}
-	else { r = 0; }
-
-	if (isFloat(B_r))
-	{
-		B = stof(B_r);
-	}
-	else { r = 0; }
+	CPU = s;
+	RAM = a;
+	HDD = b;
+	cout << "Конструктор с параметрами для объекта " << this << endl;
 }
-bool linear_ur::isFloat(const string& input)
+PC::PC(const PC& t)
 {
-	istringstream ss(input);
-	float value;
-	ss >> noskipws >> value;
-	return ss.eof() && !ss.fail();
+	CPU = t.CPU;
+	RAM = t.RAM;
+	HDD = t.HDD;
+	cout << "Конструктор копирования для объекта " << this << endl;
 }
-void linear_ur::show()
+PC::~PC()
 {
-	if (B > 0)
-	{
-		cout << "y = " << A << "x" << " + " << B << endl;
-	}
-	else if (B == 0)
-	{
-		cout << "y = " << A << "x" << endl;
-	}
-	else
-	{
-		cout << "y = " << A << "x" << " - " << abs(B) << endl;
-	}
+	cout << "Деструктор для объекта " << this << endl;
 }
-void linear_ur::function(float x_X)
+string PC::get_CPU()
 {
-	x = x_X;
-	y = A * x + B;
-	cout << "y = " << y << endl;
-	
+	return CPU;
+}
+void PC::set_CPU(std::string CPU_n)
+{
+	CPU = CPU_n;
+}
+int PC::get_RAM()
+{
+	return RAM;
+}
+void PC::set_RAM(int RAM_n)
+{
+	RAM = RAM_n;
+}
+int PC::get_HDD()
+{
+	return HDD;
+}
+void PC::set_HDD(int HDD_n)
+{
+	HDD = HDD_n;
+}
+void PC::show()
+{
+	cout << "Название ЦП: " << CPU << "\nRAM: " << RAM << "\nHDD: " << HDD << endl;
 }
