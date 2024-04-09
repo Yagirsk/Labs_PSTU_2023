@@ -15,15 +15,144 @@
 
 ## UML-диаграмма
 
-
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/1_CLASS/CLASS_1/images/class_1.drawio.png">
 
 ## Код программы
 
+~~~
+﻿#include <iostream>
+#include <string>
+#include "Header.h"
+#include <sstream>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "ru_RU");
+	string end_if;
+	cout << "Введите 'Panzerselbstfahrlafette' если хотите прекратить выполнение работы программы: ";
+	cin >> end_if;
+	if (end_if == "Panzerselbstfahrlafette")
+	{
+		return 0;
+	}
 
 
-## Тесты скриншоты
+	linear_ur urav;
+	urav.init();
+	urav.read();
+	if (urav.r == 1)
+	{
+		urav.show();
+
+		cout << "Введите x: ";
+		string x_r;
+		cin >> x_r;
+		if (urav.isFloat(x_r))
+		{
+			float x_x = stof(x_r);
+			urav.function(x_x);
+		}
+		else { cout << "Некорректное значение x\n"; }
+
+	}
+	else { cout << "Некорректное значение одной или обеих переменных\n"; }
 
 
+	system("pause");
+	main();
+}
+~~~
+
+~~~
+#ifndef HEADER_H
+#define HEADER_H
+
+class linear_ur
+{
+private:
+	float y;
+	float x;
+	float B;
+	float A;
+public:
+	bool r;
+	void init();
+	void read();
+	bool isFloat(const std::string& input);
+	void show();
+	void function(float x_X);
+};
+
+#endif
+~~~
+
+~~~
+#include <iostream>
+#include <string>
+#include <sstream>
+#include "Header.h"
+using namespace std;
+void linear_ur::init()
+{
+	y = 0;
+	x = 0;
+	B = 0;
+	A = 0;
+	r = 1;
+}
+void linear_ur::read()
+{
+	//r = 1;
+	string A_r, B_r;
+	cout << "Ââåäèòå êîýôôèöåíòû A è B ñîîòâåòñòâåííî: ";
+	cin >> A_r;
+	cin >> B_r;
+	if (isFloat(A_r))
+	{
+		A = stof(A_r);
+	}
+	else { r = 0; }
+
+	if (isFloat(B_r))
+	{
+		B = stof(B_r);
+	}
+	else { r = 0; }
+}
+bool linear_ur::isFloat(const string& input)
+{
+	istringstream ss(input);
+	float value;
+	ss >> noskipws >> value;
+	return ss.eof() && !ss.fail();
+}
+void linear_ur::show()
+{
+	if (B > 0)
+	{
+		cout << "y = " << A << "x" << " + " << B << endl;
+	}
+	else if (B == 0)
+	{
+		cout << "y = " << A << "x" << endl;
+	}
+	else
+	{
+		cout << "y = " << A << "x" << " - " << abs(B) << endl;
+	}
+}
+void linear_ur::function(float x_X)
+{
+	x = x_X;
+	y = A * x + B;
+	cout << "y = " << y << endl;
+	
+}
+~~~
+
+## Тесты
+
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/1_CLASS/CLASS_1/images/изображение_2024-04-09_120745898.png">
 
 ## Ответы на вопросы
 
