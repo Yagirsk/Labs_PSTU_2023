@@ -105,25 +105,25 @@ PC::PC()
 	CPU = "";
 	RAM = 0;
 	HDD = 0;
-	cout << "Êîíñòðóêòîð áåç ïàðàìåòðîâ äëÿ îáúåêòà " << this << endl;
+	cout << "Конструктор без параметров для объекта " << this << endl;
 }
 PC::PC(string s, int a, int b)
 {
 	CPU = s;
 	RAM = a;
 	HDD = b;
-	cout << "Êîíñòðóêòîð ñ ïàðàìåòðàìè äëÿ îáúåêòà " << this << endl;
+	cout << "Конструктор с параметрами для объекта " << this << endl;
 }
 PC::PC(const PC& t)
 {
 	CPU = t.CPU;
 	RAM = t.RAM;
 	HDD = t.HDD;
-	cout << "Êîíñòðóêòîð êîïèðîâàíèÿ äëÿ îáúåêòà " << this << endl;
+	cout << "Конструктор копирования для объекта " << this << endl;
 }
 PC::~PC()
 {
-	cout << "Äåñòðóêòîð äëÿ îáúåêòà " << this << endl;
+	cout << "Деструктор для объекта " << this << endl;
 }
 string PC::get_CPU()
 {
@@ -151,7 +151,7 @@ void PC::set_HDD(int HDD_n)
 }
 void PC::show()
 {
-	cout << "Íàçâàíèå ÖÏ: " << CPU << "\nRAM: " << RAM << "\nHDD: " << HDD << endl;
+	cout << "Название ЦП: " << CPU << "\nRAM: " << RAM << "\nHDD: " << HDD << endl;
 }
 ~~~
 
