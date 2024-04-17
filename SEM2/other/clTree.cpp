@@ -87,8 +87,11 @@ public:
         font.loadFromFile("C:/Windows/Fonts/arial.ttf");
         sf::Text text(to_string(node->data), font, 20);
         text.setFillColor(sf::Color::Blue);
-        text.setPosition(x + 10, y + 10);
+        text.setPosition(x + 12, y + 8);
         window.draw(text);
+
+        sf::Event event;
+        
 
         if (node->l != nullptr)
         {
@@ -114,13 +117,10 @@ public:
     void balanceTree()
     {
         std::vector<int> nodes;
-        collectNodes(head, nodes); // Собираем все значения узлов дерева в вектор
-
-        clearTree(head); // Очищаем текущее дерево
-
-        std::sort(nodes.begin(), nodes.end()); // Сортируем значения вектора
-
-        head = buildBalancedTree(nodes, 0, nodes.size() - 1); // Строим сбалансированное дерево из значений вектора
+        collectNodes(head, nodes);
+        clearTree(head);
+        std::sort(nodes.begin(), nodes.end());
+        head = buildBalancedTree(nodes, 0, nodes.size() - 1);
 
     }
     void clearTree(Tree_el* node)
@@ -134,7 +134,147 @@ public:
         clearTree(node->r);
         delete node;
     }
+    void deleteNode(Tree_el*& node, Tree_el* parent)
+    {
+        if (node == nullptr)
+            return;
 
+        deleteNode(node->l, node);
+        deleteNode(node->r, node);
+
+        if (parent != nullptr)
+        {
+            if (parent->l == node)
+                parent->l = nullptr;
+            else if (parent->r == node)
+                parent->r = nullptr;
+        }
+
+        delete node;
+        node = nullptr;
+    }
+    void del_node()
+    {
+        string s;
+        cin >> s;
+        Tree_el* ntd = head;
+        Tree_el* parent = nullptr;
+        bool delte = true;
+        for (int i = 0; i < s.size(); i++)
+        {
+            if (ntd == nullptr)
+            {
+                cout << "некоректная позиция\n";
+                delte = false;
+                break;
+            }
+            parent = ntd;
+            if (s[i] == 'l')
+                ntd = ntd->l;
+            else if (s[i] == 'r')
+                ntd = ntd->r;
+            else if (s[i] != 'l' and s[i] != 'r')
+            {
+                cout << "некоректная позиция\n";
+                delte = false;
+                break;
+            }
+        }
+        if (delte)
+        {
+            deleteNode(ntd, parent);
+        }
+    }
+    void add_node()
+    {
+        cout << "Введите количество элементов нового дерева: ";
+        int n;
+        cin >> n;
+        Tree tra;
+        int a1;
+        cout << "Введите \"корневой\" элемент нового дерева : ";
+        cin >> a1;
+        tra.head->data = a1;
+        for (int i = 1; i < n; i++)
+        {
+            int a;
+            cout << "Введите элемент №" << i + 1 << ": ";
+            cin >> a;
+            tra.push(a);
+        }
+        Tree_el* tmp = head;
+        int t_data = tra.head->data;
+        while (true)
+        {
+            if (tmp->data >= t_data)
+            {
+                if (tmp->l == nullptr)
+                {
+                    tmp->l = tra.head;
+                    break;
+                }
+                tmp = tmp->l;
+            }
+            else if (tmp->data < t_data)
+            {
+                if (tmp->r == nullptr)
+                {
+                    tmp->r = tra.head;
+                    break;
+                }
+                tmp = tmp->r;
+            }
+        }
+
+    }
+    float sumElements(Tree_el* node)
+    {
+        if (node == nullptr)
+            return 0;
+
+        // Рекурсивно считаем суммы левого и правого поддеревьев
+        int sumLeft = sumElements(node->l);
+        int sumRight = sumElements(node->r);
+
+        // Суммируем значение текущего узла с суммами левого и правого поддеревьев
+        return node->data + sumLeft + sumRight;
+    }
+    float getSumOfAllElements()
+    {
+        return sumElements(head);
+    }
+    float countElements(Tree_el* node)
+    {
+        if (node == nullptr)
+            return 0;
+
+        int countLeft = countElements(node->l);
+        int countRight = countElements(node->r);
+
+        return 1 + countLeft + countRight;
+    }
+    float getCountOfAllElements()
+    {
+        return countElements(head);
+    }
+    Tree_el* search(Tree_el* node, int key, string& strv)
+    {
+        if (node == nullptr || node->data == key)
+        {
+            return node;
+        }
+
+        if (key < node->data)
+        {
+            strv += "l";  // Добавляем "l" к пути
+            return search(node->l, key, strv);
+        }
+        else
+        {
+            strv += "r";  // Добавляем "r" к пути
+            return search(node->r, key, strv);
+        }
+    }
 private:
     void collectNodes(Tree_el* node, std::vector<int>& nodes)
     {
