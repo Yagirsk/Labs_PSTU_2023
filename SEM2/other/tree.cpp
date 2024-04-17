@@ -20,30 +20,132 @@ void reverserss(string& str)
 }
 int main()
 {
-    setlocale(LC_ALL, "ru_RU");
-
-    cout << "Введите количество элементов в дереве: ";
-    int n;
-    cin >> n;
-
-    Tree tr;
-    int a1;
-    cout << "Введите \"корневой\" элемент дерева : ";
-    cin >> a1;
-    tr.head->data = a1;
-
-    for (int i = 1; i < n; i++)
-    {
-        int a;
-        cout << "Введите элемент №" << i + 1 << ": ";
-        cin >> a;
-        tr.push(a);
-    }
-
     sf::RenderWindow window(sf::VideoMode(1600, 800), "Binary Tree Visualization");
 
     sf::Font font;
     font.loadFromFile("C:/Windows/Fonts/arial.ttf");
+    setlocale(LC_ALL, "ru_RU");
+
+    std::string inputString1 = "";
+
+    bool isInputting11 = true;
+    sf::Text inputText1("", font, 30);
+    inputText1.setFillColor(sf::Color::White);
+    inputText1.setPosition(900, 150);
+
+    sf::String unicodeString1 = L"Введите количество элементов в дереве\n(не менее одного)";
+    sf::Text outText1(unicodeString1, font, 30);
+    outText1.setFillColor(sf::Color::White);
+    outText1.setPosition(300, 150);
+    while (isInputting11)
+    {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::TextEntered) {
+                if (event.text.unicode < 128) {
+                    if (event.text.unicode == '\b' && inputString1.size() > 0) {
+                        inputString1.pop_back();
+                    }
+                    else if (event.text.unicode != '\b') {
+                        inputString1 += static_cast<char>(event.text.unicode);
+                    }
+                    inputText1.setString(inputString1);
+                }
+            }
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter) {
+                isInputting11 = false;
+            }
+        }
+
+        window.clear();
+        window.draw(inputText1);
+        window.draw(outText1);
+        window.display();
+    }
+    int n = stoi(inputString1);
+
+    std::string inputString2 = "";
+    bool isInputting12 = true;
+    sf::Text inputText2("", font, 30);
+    inputText2.setFillColor(sf::Color::White);
+    inputText2.setPosition(850, 150);
+
+    sf::String unicodeString3 = L"Введите \"корневой\" элемент дерева";
+    sf::Text outText3(unicodeString3, font, 30);
+    outText3.setFillColor(sf::Color::White);
+    outText3.setPosition(300, 150);
+    while (isInputting12)
+    {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::TextEntered) {
+                if (event.text.unicode < 128) {
+                    if (event.text.unicode == '\b' && inputString2.size() > 0) {
+                        inputString2.pop_back();
+                    }
+                    else if (event.text.unicode != '\b') {
+                        inputString2 += static_cast<char>(event.text.unicode);
+                    }
+                    inputText2.setString(inputString2);
+                }
+            }
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter) {
+                isInputting12 = false;
+            }
+        }
+
+        window.clear();
+        window.draw(inputText2);
+        window.draw(outText3);
+        window.display();
+    }
+    int a1 = stoi(inputString2);
+    Tree tr;
+    tr.head->data=a1;
+
+    for (int i = 2; i <= n; i++)
+    {
+        std::string inputString3 = "";
+        bool isInputting13 = true;
+        sf::Text inputText3("", font, 30);
+        inputText3.setFillColor(sf::Color::White);
+        inputText3.setPosition(620, 150);
+
+        string isp = to_string(i);
+        sf::String is = sf::String::fromUtf8(isp.begin(), isp.end());
+        sf::String unicodeString3 = L"Введите элемент №"+is;
+        sf::Text outText4(unicodeString3, font, 30);
+        outText4.setFillColor(sf::Color::White);
+        outText4.setPosition(300, 150);
+        while (isInputting13)
+        {
+            sf::Event event;
+            while (window.pollEvent(event)) {
+                if (event.type == sf::Event::TextEntered) {
+                    if (event.text.unicode < 128) {
+                        if (event.text.unicode == '\b' && inputString3.size() > 0) {
+                            inputString3.pop_back();
+                        }
+                        else if (event.text.unicode != '\b') {
+                            inputString3 += static_cast<char>(event.text.unicode);
+                        }
+                        inputText3.setString(inputString3);
+                    }
+                }
+                if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter) {
+                    isInputting13 = false;
+                }
+            }
+
+            window.clear();
+            window.draw(inputText3);
+            window.draw(outText4);
+            window.display();
+        }
+
+        int a = stoi(inputString3);
+        tr.push(a);
+    }
 
     sf::Text buttonText;
     buttonText.setFont(font);
@@ -122,22 +224,13 @@ int main()
                     window.draw(text);
                     window.display();
 
-                    tr.del_node();
+                    tr.del_node(window, font);
                     deleted = true;
                     balanced = false;
                 }
                 if (addButtonBounds.contains(static_cast<sf::Vector2f>(mousePos)))
                 {
-                    sf::String unicodeString = L"В консоли введи дерево которое вставится в данное";
-                    sf::Text text(unicodeString, font, 30);
-                    text.setFont(font);
-                    text.setFillColor(sf::Color::White);
-                    text.setPosition(200, 100);
-                    window.clear();
-                    window.draw(text);
-                    window.display();
-
-                    tr.add_node();
+                    tr.add_node(window, font);
                     balanced = false;
                     deleted = false;
                 }
@@ -156,18 +249,47 @@ int main()
                 }
                 if (searchButtonBounds.contains(static_cast<sf::Vector2f>(mousePos)))
                 {
-                    sf::String unicodeString = L"В консоли введите значение элемента который надо найти";
-                    sf::Text text(unicodeString, font, 30);
-                    text.setFont(font);
-                    text.setFillColor(sf::Color::White);
-                    text.setPosition(200, 100);
-                    window.clear();
-                    window.draw(text);
-                    window.display();
-                    string strv = "";
-                    int key;
-                    cin >> key;
+                    sf::Text inputText("", font, 30);
+                    inputText.setFillColor(sf::Color::White);
+                    inputText.setPosition(865, 150);
 
+                    sf::String unicodeString = L"Введите значение которое надо найти";
+                    sf::Text outText(unicodeString, font, 30);
+                    outText.setFillColor(sf::Color::White);
+                    outText.setPosition(300, 150);
+
+                    std::string inputString;
+
+                    bool isInputting = true;
+
+                    while (isInputting)
+                    {
+                        sf::Event event;
+                        while (window.pollEvent(event)) {
+                            if (event.type == sf::Event::TextEntered) {
+                                if (event.text.unicode < 128) {
+                                    if (event.text.unicode == '\b' && inputString.size() > 0) {
+                                        inputString.pop_back();
+                                    }
+                                    else if (event.text.unicode != '\b') {
+                                        inputString += static_cast<char>(event.text.unicode);
+                                    }
+                                    inputText.setString(inputString);
+                                }
+                            }
+                            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter) {
+                                isInputting = false;
+                            }
+                        }
+
+                        window.clear();
+                        window.draw(inputText);
+                        window.draw(outText);
+                        window.display();
+                    }
+                    int key = stoi(inputString);
+
+                    string strv = "";
                     reverserss(strv);
                     Tree_el* node_searched = tr.search(tr.head, key, strv);
 
@@ -182,7 +304,7 @@ int main()
                         window.clear();
                         window.draw(textt);
                         window.display();
-                        this_thread::sleep_for(std::chrono::seconds(5));
+                        this_thread::sleep_for(std::chrono::seconds(3));
                     }
                     else if (node_searched == tr.head)
                     {
@@ -194,7 +316,7 @@ int main()
                         window.clear();
                         window.draw(textt);
                         window.display();
-                        this_thread::sleep_for(std::chrono::seconds(5));
+                        this_thread::sleep_for(std::chrono::seconds(3));
                     }
                     else
                     {
@@ -206,7 +328,7 @@ int main()
                         window.clear();
                         window.draw(textt);
                         window.display();
-                        this_thread::sleep_for(std::chrono::seconds(5));
+                        this_thread::sleep_for(std::chrono::seconds(3));
                     }
                 }
             }
