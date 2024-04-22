@@ -200,7 +200,7 @@ int main()
 
 ## Тесты скриншоты
 
-<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/1_CLASS/CLASS_5/images/class_5.drawio.png">
+<image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/1_CLASS/CLASS_6/images/изображение_2024-04-22_161920773.png">
 
 ## Ответы на вопросы
 
