@@ -579,27 +579,27 @@ int main()
 
 ## Тесты скриншоты
 
-![Скриншот номер 1](https://github.com/Fedor0000/TheUltimateFolder/blob/main/Sem_2/Labs/class/Lab10/screen/1.png)
+![Скриншот номер 1](https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/1_CLASS/CLASS_10_F/images/1.png)
 
-![Скриншот номер 2](https://github.com/Fedor0000/TheUltimateFolder/blob/main/Sem_2/Labs/class/Lab10/screen/2.png)
+![Скриншот номер 2](https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/1_CLASS/CLASS_10_F/images/2.png)
 
-![Скриншот номер 3](https://github.com/Fedor0000/TheUltimateFolder/blob/main/Sem_2/Labs/class/Lab10/screen/3.png)
+![Скриншот номер 3](https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/1_CLASS/CLASS_10_F/images/3.png)
 
-![Скриншот номер 4](https://github.com/Fedor0000/TheUltimateFolder/blob/main/Sem_2/Labs/class/Lab10/screen/4.png)
+![Скриншот номер 4](https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/1_CLASS/CLASS_10_F/images/4.png)
 
-![Скриншот номер 5](https://github.com/Fedor0000/TheUltimateFolder/blob/main/Sem_2/Labs/class/Lab10/screen/5.png)
+![Скриншот номер 5](https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/1_CLASS/CLASS_10_F/images/5.png)
 
 Как видим, числа в файлах хранятся в непонятном человеку виде, например, +2,2 - это 2 рубля 2 копейки, то есть 2,02 а не 2,20 как можно было подумать.
 
-![Скриншот номер 6](https://github.com/Fedor0000/TheUltimateFolder/blob/main/Sem_2/Labs/class/Lab10/screen/6.png)
+![Скриншот номер 6](https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/1_CLASS/CLASS_10_F/images/6.png)
 
-![Скриншот номер 7](https://github.com/Fedor0000/TheUltimateFolder/blob/main/Sem_2/Labs/class/Lab10/screen/7.png)
+![Скриншот номер 7](https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/1_CLASS/CLASS_10_F/images/7.png)
 
-![Скриншот номер 8](https://github.com/Fedor0000/TheUltimateFolder/blob/main/Sem_2/Labs/class/Lab10/screen/8.png)
+![Скриншот номер 8](https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/1_CLASS/CLASS_10_F/images/8.png)
 
-![Скриншот номер 9](https://github.com/Fedor0000/TheUltimateFolder/blob/main/Sem_2/Labs/class/Lab10/screen/9.png)
+![Скриншот номер 9](https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/1_CLASS/CLASS_10_F/images/9.png)
 
-![Скриншот номер 10](https://github.com/Fedor0000/TheUltimateFolder/blob/main/Sem_2/Labs/class/Lab10/screen/10.png)
+![Скриншот номер 10](https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/1_CLASS/CLASS_10_F/images/10.png)
 
 ## Ответы на вопросы
 
