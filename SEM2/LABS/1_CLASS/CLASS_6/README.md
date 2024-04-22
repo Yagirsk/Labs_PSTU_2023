@@ -23,7 +23,7 @@
 
 ## UML-диаграмма
 
-![uml](https://github.com/Fedor0000/TheUltimateFolder/blob/main/Sem_2/Labs/class/Lab6/uml.png)
+![uml](https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/1_CLASS/CLASS_6/images/class_6.drawio.png)
 
 ## Код программы
 
