@@ -35,7 +35,7 @@ Laby_Chast_3.docx
 
 ## видео-тест
 
-![https://youtu.be/RmjYu3dRx7E](my_video.mov)
+![video](https://youtu.be/RmjYu3dRx7E)
 
 #№ код
 
