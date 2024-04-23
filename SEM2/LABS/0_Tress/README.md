@@ -33,6 +33,10 @@ Laby_Chast_3.docx
 
 <image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/0_Tress/images/tree.drawio.png">
 
+## видео-тест
+
+![https://youtu.be/RmjYu3dRx7E](my_video.mov)
+
 #№ код
 
 ~~~cpp
