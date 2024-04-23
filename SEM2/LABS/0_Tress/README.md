@@ -1095,3 +1095,7 @@ int main()
     return 0;
 }
 ~~~
+
+## Видео тест
+
+[![](https://markdown-videos-api.jorgenkh.no/youtube/RmjYu3dRx7E)](https://www.youtube.com/watch?v=RmjYu3dRx7E)
