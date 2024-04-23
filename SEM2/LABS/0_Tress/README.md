@@ -35,7 +35,7 @@ Laby_Chast_3.docx
 
 ## видео-тест
 
-[![](https://markdown-videos-api.jorgenkh.no/youtube/dQw4w9WgXcQ)](https://www.youtube.com/watch?v=RmjYu3dRx7E)
+[![](https://markdown-videos-api.jorgenkh.no/youtube/RmjYu3dRx7E)](https://www.youtube.com/watch?v=RmjYu3dRx7E)
 
 #№ код
 
