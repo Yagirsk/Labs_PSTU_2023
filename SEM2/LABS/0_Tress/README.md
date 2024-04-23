@@ -33,9 +33,9 @@ Laby_Chast_3.docx
 
 <image src ="https://github.com/Yagirsk/Labs_PSTU_2023/blob/main/SEM2/LABS/0_Tress/images/tree.drawio.png">
 
-## видео-тест
+## Видео тест
 
-https://youtu.be/dQw4w9WgXcQ
+[![](https://markdown-videos-api.jorgenkh.no/youtube/RmjYu3dRx7E)](https://www.youtube.com/watch?v=RmjYu3dRx7E)
 
 #№ код
 
@@ -1096,6 +1096,3 @@ int main()
 }
 ~~~
 
-## Видео тест
-
-[![](https://markdown-videos-api.jorgenkh.no/youtube/RmjYu3dRx7E)](https://www.youtube.com/watch?v=RmjYu3dRx7E)
