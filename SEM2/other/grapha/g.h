@@ -5,7 +5,6 @@
 #include <unordered_map>
 #include <vector>
 #include <stack>
-#include <unordered_map>
 using namespace std;
 class Edge;
 class Node;
@@ -34,8 +33,9 @@ public:
 
     void addNode(int data);
     void addEdge(int fromData, int toData, int weight);
-    void DFS(int startData, vector<int> dfs);
-
+    void DFS(int startData, vector<int> &dfs);
+    void removeNode(int data);
+    void removeEdge(int startData, int endData);
 };
 class QtGraphs : public QMainWindow
 {
@@ -52,9 +52,6 @@ protected:
     void mouseReleaseEvent(QMouseEvent* event) override;
 
 private:
-    QPoint m_circleCenter;
-    bool m_circlePressed;
-    QString m_circleText;
     Ui::QtGraphsClass ui;
     Node* m_selectedNode;
     bool m_nodeSelected;
@@ -62,4 +59,6 @@ private:
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
     void on_pushButton_3_clicked();
+    void on_pushButton_4_clicked();
+    void on_pushButton_5_clicked();
 };
