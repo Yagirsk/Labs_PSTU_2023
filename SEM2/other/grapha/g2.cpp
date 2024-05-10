@@ -10,7 +10,6 @@
 #include <QTimer>
 #include <queue>
 #include <limits>
-//#include "QtWidgetsClass.h"
 const double M_PI = 3.1415;
 void Graph::addNode(int data) {
     if (nodes_map.find(data) == nodes_map.end()) {
@@ -22,10 +21,47 @@ void Graph::addNode(int data) {
     }
 }
 void Graph::addEdge(int fromData, int toData, int weight) {
+    for (Edge* edge : nodes_map[fromData]->edges_to_node) {
+        if (edge->to == nodes_map[toData]) {
+            return;
+        }
+    }
+
     Edge* newEdge = new Edge();
     newEdge->to = nodes_map[toData];
     newEdge->weight = weight;
     nodes_map[fromData]->edges_to_node.push_back(newEdge);
+}
+void Graph::clearGraph()
+{
+    // Удаление всех узлов
+    for (auto& pair : nodes_map)
+    {
+        Node* node = pair.second;
+        delete node;
+    }
+
+    // Очистка хэш-таблицы
+    nodes_map.clear();
+}
+
+void Graph::updateEdgeWeight(int startData, int endData, int newWeight) {
+    if (nodes_map.find(startData) == nodes_map.end() || nodes_map.find(endData) == nodes_map.end()) {
+        // Один из узлов не существует
+        return;
+    }
+
+    Node* startNode = nodes_map[startData];
+    Node* endNode = nodes_map[endData];
+
+    for (Edge* edge : startNode->edges_to_node) {
+        if (edge->to == endNode) {
+            edge->weight = newWeight;
+            return;
+        }
+    }
+
+    // Ребро не найдено
 }
 void Graph::DFS(int startData, vector<int>& dfs)
 {
@@ -58,6 +94,62 @@ void Graph::DFS(int startData, vector<int>& dfs)
         {
             dfs.push_back(pair.first);
             visited.insert(pair.first);
+        }
+    }
+}
+void Graph::BFS(int startData, vector<int>& bfs)
+{
+    queue<Node*> q;
+    unordered_map<int, bool> visited;
+
+    Node* startNode = nodes_map[startData];
+    q.push(startNode);
+    visited[startData] = true;
+
+    while (!q.empty())
+    {
+        Node* currentNode = q.front();
+        q.pop();
+
+        bfs.push_back(currentNode->data);
+
+        for (Edge* edge : currentNode->edges_to_node)
+        {
+            Node* neighborNode = edge->to;
+            if (!visited[neighborNode->data])
+            {
+                visited[neighborNode->data] = true;
+                q.push(neighborNode);
+            }
+        }
+    }
+
+    // Проверяем не посещенные узлы и запускаем для них обход в ширину
+    for (const auto& pair : nodes_map)
+    {
+        Node* node = pair.second;
+        if (!visited[node->data])
+        {
+            q.push(node);
+            visited[node->data] = true;
+
+            while (!q.empty())
+            {
+                Node* currentNode = q.front();
+                q.pop();
+
+                bfs.push_back(currentNode->data);
+
+                for (Edge* edge : currentNode->edges_to_node)
+                {
+                    Node* neighborNode = edge->to;
+                    if (!visited[neighborNode->data])
+                    {
+                        visited[neighborNode->data] = true;
+                        q.push(neighborNode);
+                    }
+                }
+            }
         }
     }
 }
@@ -137,60 +229,76 @@ void Graph::removeEdge(int startData, int endData)
 }
 vector<int> Graph::Dijkstra(int startData, int endData)
 {
-    std::priority_queue<std::pair<int, Node*>, std::vector<std::pair<int, Node*>>, std::greater<>> pq;
+    unordered_map<int, int> dist;
+    unordered_map<int, int> prev;
+    vector<int> result;
 
-    Node* startNode = nodes_map[startData];
-    startNode->distance = 0;
+    for (auto& pair : nodes_map)
+    {
+        dist[pair.first] = INT_MAX;
+        prev[pair.first] = -1;
+    }
 
-    pq.push({ 0, startNode });
+    dist[startData] = 0;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    pq.push({ 0, startData });
 
     while (!pq.empty())
     {
-        Node* current = pq.top().second;
-        int dist = pq.top().first;
+        int u = pq.top().second;
         pq.pop();
 
-        if (current->distance == -1 || dist > current->distance) continue; // Пропускаем вершины без пути или уже обработанные
+        if (u == endData)
+            break;
 
-        for (Edge* edge : current->edges_to_node)
+        for (Edge* edge : nodes_map[u]->edges_to_node)
         {
-            int newDist = dist + edge->weight;
+            int v = edge->to->data;
+            int alt = dist[u] + edge->weight;
 
-            if (edge->to->distance == -1 || newDist < edge->to->distance)
+            if (alt < dist[v])
             {
-                edge->to->distance = newDist;
-                edge->to->prev = current;
-                pq.push({ newDist, edge->to });
+                dist[v] = alt;
+                prev[v] = u;
+                pq.push({ alt, v });
             }
         }
     }
 
-    // Формируем кратчайший путь, если он существует
-    std::vector<int> shortestPath;
-    if (nodes_map[endData]->distance != -1)
+    // Восстановление пути
+    for (int at = endData; at != -1; at = prev[at])
     {
-        Node* endNode = nodes_map[endData];
-
-        while (endNode != nullptr)
-        {
-            shortestPath.insert(shortestPath.begin(), endNode->data);
-            endNode = endNode->prev;
-        }
+        result.push_back(at);
     }
+    reverse(result.begin(), result.end());
 
-    return shortestPath;
+    if (result[0] == endData) { result.pop_back(); }
+    return result;
 }
 QtGraphs::QtGraphs(QWidget* parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
-    
+
+    /*QString imagePath = "og_og_145233582124948366.jpg";
+    //QString imagePath = "C:/Users/bushm/Desktop/class/QtGraphs/QtGraphs/og_og_145233582124948366.jpg";
+    // Создаем кнопку
+    QPushButton* button = ui.pushButton_6;
+
+    button->setStyleSheet("QPushButton {"
+        "border-image: url(\"" + imagePath + "\");"
+        "}");*/
     connect(ui.pushButton, &QPushButton::clicked, this, &QtGraphs::on_pushButton_clicked);
     connect(ui.pushButton_2, &QPushButton::clicked, this, &QtGraphs::on_pushButton_2_clicked);
     connect(ui.pushButton_4, &QPushButton::clicked, this, &QtGraphs::on_pushButton_3_clicked);
     connect(ui.pushButton_3, &QPushButton::clicked, this, &QtGraphs::on_pushButton_4_clicked);
     connect(ui.pushButton_5, &QPushButton::clicked, this, &QtGraphs::on_pushButton_5_clicked);
     connect(ui.pushButton_6, &QPushButton::clicked, this, &QtGraphs::on_pushButton_6_clicked);
+    connect(ui.pushButton_7, &QPushButton::clicked, this, &QtGraphs::on_pushButton_7_clicked);
+    connect(ui.pushButton_8, &QPushButton::clicked, this, &QtGraphs::on_pushButton_8_clicked);
+    connect(ui.pushButton_9, &QPushButton::clicked, this, &QtGraphs::on_pushButton_9_clicked);
+    connect(ui.pushButton_10, &QPushButton::clicked, this, &QtGraphs::on_pushButton_10_clicked);
+    connect(ui.pushButton_11, &QPushButton::clicked, this, &QtGraphs::on_pushButton_11_clicked);
 }
 QtGraphs::~QtGraphs()
 {
@@ -206,57 +314,13 @@ void QtGraphs::paintEvent(QPaintEvent* event) {
             QPoint pos_f;
             QPoint pos_t;
             int d = 20 * sin(atan(1));
-            if (edge->to->pos.x() - node->pos.x() == 0 and edge->to->pos.y() - node->pos.y() > 0)
-            {
-                pos_f = QPoint(node->pos.x(), node->pos.y() + 20);
-                pos_t = QPoint(edge->to->pos.x(), edge->to->pos.y() - 20);
-            }
-            else if (edge->to->pos.x() - node->pos.x() == 0 and edge->to->pos.y() - node->pos.y() < 0)
-            {
-                pos_f = QPoint(node->pos.x(), node->pos.y() - 20);
-                pos_t = QPoint(edge->to->pos.x(), edge->to->pos.y() + 20);
-            }
-            else if (edge->to->pos.x() - node->pos.x() > 0 and edge->to->pos.y() - node->pos.y() < 0)
-            {
-                pos_f = QPoint(node->pos.x() + d, node->pos.y() - d);
-                pos_t = QPoint(edge->to->pos.x() - d, edge->to->pos.y() + d);
-                
-            }
-            else if (edge->to->pos.x() - node->pos.x() < 0 and edge->to->pos.y() - node->pos.y() < 0)
-            {
-                pos_f = QPoint(node->pos.x() - d, node->pos.y() - d);
-                pos_t = QPoint(edge->to->pos.x() + d, edge->to->pos.y() + d);
-                
-            }
-            else if (edge->to->pos.x() - node->pos.x() < 0 and edge->to->pos.y() - node->pos.y() > 0)
-            {
-                pos_f = QPoint(node->pos.x() - d, node->pos.y() + d);
-                pos_t = QPoint(edge->to->pos.x() + d, edge->to->pos.y() - d);
-            }
-            else if (edge->to->pos.x() - node->pos.x() > 0 and edge->to->pos.y() - node->pos.y() > 0)
-            {
-                pos_f = QPoint(node->pos.x() + d, node->pos.y() + d);
-                pos_t = QPoint(edge->to->pos.x() - d, edge->to->pos.y() - d);
-            }
-            else if (edge->to->pos.x() - node->pos.x() > 0 and edge->to->pos.y() - node->pos.y() == 0)
-            {
-                pos_f = QPoint(node->pos.x() + 20, node->pos.y());
-                pos_t = QPoint(edge->to->pos.x() - 20, edge->to->pos.y());
-            }
-            else if (edge->to->pos.x() - node->pos.x() < 0 and edge->to->pos.y() - node->pos.y() == 0)
-            {
-                pos_f = QPoint(node->pos.x() - 20, node->pos.y());
-                pos_t = QPoint(edge->to->pos.x() + 20, edge->to->pos.y());
-            }
-            else
-            {
-                pos_f = node->pos;
-                pos_t = edge->to->pos;
-            }
+            double angles = atan2(-(edge->to->pos.y() - node->pos.y()), (edge->to->pos.x()-node->pos.x()));
+            pos_f = QPoint(node->pos.x()+20*cos(angles), node->pos.y() - 20*sin(angles));
+            pos_t = QPoint(edge->to->pos.x()- 20 * cos(angles), edge->to->pos.y() + 20*sin(angles));
             painter.drawLine(pos_f, pos_t);
-            int x_t = pos_f.x() + 3 * (pos_t.x() - pos_f.x()) / 5;
-            int y_t = pos_f.y() - 3 * (pos_f.y() - pos_t.y()) / 5;
-            painter.drawText(x_t, y_t, QString::number(edge->weight));
+            int x_t = pos_f.x() + 4 * (pos_t.x() - pos_f.x()) / 5;
+            int y_t = pos_f.y() - 4 * (pos_f.y() - pos_t.y()) / 5;
+            painter.drawText(x_t-10, y_t+10, QString::number(edge->weight));
 
             QLine line(pos_f, pos_t);
             double angle = atan2(-line.dy(), line.dx())-M_PI/2;
@@ -273,13 +337,13 @@ void QtGraphs::paintEvent(QPaintEvent* event) {
     for (const auto& pair : graph.nodes_map) {
         Node* node = pair.second;
         painter.drawEllipse(node->pos, 20, 20);
-        painter.drawText(node->pos.x() - 7, node->pos.y() + 7, QString::number(node->data));
+        painter.drawText(node->pos.x() - 9, node->pos.y() + 8, QString::number(node->data));
     }
     if (sel) {
         painter.drawEllipse(100,100, 40, 40);
         painter.setBrush(Qt::green);
         painter.drawEllipse(sNode->pos, 20, 20);
-        painter.drawText(sNode->pos.x() - 7, sNode->pos.y() + 7, QString::number(sNode->data));
+        painter.drawText(sNode->pos.x() - 9, sNode->pos.y() + 8, QString::number(sNode->data));
     }
 }
 void QtGraphs::mousePressEvent(QMouseEvent* event)
@@ -364,6 +428,7 @@ void QtGraphs::on_pushButton_4_clicked()
 }
 void QtGraphs::on_pushButton_5_clicked()
 {
+    ui.textBrowser->clear();
     if (ui.lineEdit_8->text().isEmpty()) {
         return;
     }
@@ -378,7 +443,7 @@ void QtGraphs::on_pushButton_5_clicked()
                 resultString.append(", ");
             }
         }
-        ui.textBrowser->setText(resultString);
+        //ui.textBrowser->setText(resultString);
 
         static int idx = 0;
         QTimer* timer = new QTimer(this);
@@ -401,10 +466,12 @@ void QtGraphs::on_pushButton_5_clicked()
             }
             });
         timer->start(500);
+
     }
 }
 void QtGraphs::on_pushButton_6_clicked()
 {
+    ui.textBrowser_2->clear();
     if (ui.lineEdit_9->text().isEmpty() or ui.lineEdit_9->text().isEmpty()) {
         return;
     }
@@ -417,7 +484,7 @@ void QtGraphs::on_pushButton_6_clicked()
         for (int i = 0; i < di.size(); i++) {
             resultString.append(QString::number(di[i]));
             if (i < di.size() - 1) {
-                resultString.append(", ");
+                resultString.append("->");
             }
         }
         
@@ -445,18 +512,115 @@ void QtGraphs::on_pushButton_6_clicked()
             });
         timer->start(500);
 
-        static bool ara_ara = 0;
-        QTimer* timer2 = new QTimer(this);
-        connect(timer2, &QTimer::timeout, [=]() {
-            if (ara_ara)
-            {
-                timer2->stop();
-                timer2->deleteLater();
+    }
+}
+void QtGraphs::on_pushButton_7_clicked()
+{
+    if (ui.lineEdit_11->text().isEmpty()) {
+        return;
+    }
+    vector<int> dfsv;
+    int s = ui.lineEdit_11->text().toInt();
+    if (graph.nodes_map.find(s) != graph.nodes_map.end()) {
+        graph.BFS(s, dfsv);
+        QString resultString;
+        for (int i = 0; i < dfsv.size(); i++) {
+            resultString.append(QString::number(dfsv[i]));
+            if (i < dfsv.size() - 1) {
+                resultString.append(", ");
+            }
+        }
+        //ui.textBrowser_2->setText(resultString);
+
+        static int idx = 0;
+        QTimer* timer = new QTimer(this);
+        connect(timer, &QTimer::timeout, [=]() {
+            if (dfsv.size() != 0 and idx < dfsv.size()) {
+                Node* nod = graph.nodes_map[dfsv[idx]];
+                sNode = nod;
+                sel = 1;
+                update();
+                idx++;
             }
             else {
-                ara_ara = 1;
+                ui.textBrowser_3->setText(resultString);
+                timer->stop();
+                timer->deleteLater();
+                sel = 0;
+                ui.lineEdit_11->clear();
+                update();
+                idx = 0;
             }
             });
-        timer2->start(3000);
+        timer->start(500);
     }
+}
+void QtGraphs::on_pushButton_8_clicked()
+{
+    graph.addNode(1);
+    graph.addNode(2);
+    graph.addNode(3);
+    graph.addNode(4);
+    graph.addNode(5);
+    graph.addNode(6);
+    graph.addEdge(1, 2, 4);
+    graph.addEdge(1,5,8);
+    graph.addEdge(5,3,12);
+    graph.addEdge(3,5,12);
+    graph.addEdge(5,2,23);
+    graph.addEdge(2,4,9);
+    graph.addEdge(4,6,11);
+    graph.addEdge(2,3,15);
+    graph.addEdge(3,2,15);
+    graph.addEdge(6,3,6);
+    update();
+}
+void QtGraphs::on_pushButton_9_clicked()
+{
+    graph.addNode(1);
+    graph.addNode(2);
+    graph.addNode(3);
+    graph.addNode(4);
+    graph.addNode(5);
+    graph.addNode(6);
+    graph.addNode(7);
+    graph.addNode(8);
+    graph.addNode(9);
+    graph.addNode(10);
+    graph.addEdge(1,2,8);
+    graph.addEdge(2,3,9);
+    graph.addEdge(3,2,6);
+    graph.addEdge(1,4,9);
+    graph.addEdge(4,5,3);
+    graph.addEdge(4,3,12);
+    graph.addEdge(1,6,10);
+    graph.addEdge(6,7,16);
+    graph.addEdge(7,5,16);
+    graph.addEdge(8,9,1);
+    graph.addEdge(9,8,2);
+    graph.addEdge(5,7,89);
+    graph.addEdge(4,1,5);
+    graph.addNode(11);
+    graph.addEdge(8, 11, 69);
+    graph.addEdge(11, 9, 44);
+    update();
+}
+void QtGraphs::on_pushButton_10_clicked()
+{
+    if (ui.lineEdit_12->text().isEmpty() or ui.lineEdit_13->text().isEmpty() or ui.lineEdit_14->text().isEmpty()) {
+        return;
+    }
+    int s = ui.lineEdit_12->text().toInt();
+    int t = ui.lineEdit_14->text().toInt();
+    int w = ui.lineEdit_13->text().toInt();
+    graph.updateEdgeWeight(s, t, w);
+    ui.lineEdit_12->text().clear();
+    ui.lineEdit_14->text().clear();
+    ui.lineEdit_13->text().clear();
+    update();
+}
+void QtGraphs::on_pushButton_11_clicked()
+{
+    graph.clearGraph();
+    update();
 }
