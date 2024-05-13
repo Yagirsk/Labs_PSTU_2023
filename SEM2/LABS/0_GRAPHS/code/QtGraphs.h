@@ -9,7 +9,7 @@ using namespace std;
 class Edge;
 class Node;
 class Graph;
-class Node //класс для узла графа
+class Node //РєР»Р°СЃСЃ РґР»СЏ СѓР·Р»Р° РіСЂР°С„Р°
 {
 public:
     int data;
@@ -20,7 +20,7 @@ public:
         pos = QPoint(400, 200);
     }
 };
-class Edge //класс для ребра графа
+class Edge //РєР»Р°СЃСЃ РґР»СЏ СЂРµР±СЂР° РіСЂР°С„Р°
 {
 public:
     int weight;
@@ -32,15 +32,15 @@ public:
     unordered_map<int, Node*> nodes_map;
 
 
-    void addNode(int data);//добавление узла с новым значением
-    void addEdge(int fromData, int toData, int weight);//добавление ребра с весом, от заданного узла к другому заданному узлу
-    void clearGraph();//очитка графа
-    void updateEdgeWeight(int startData, int endData, int newWeight);//редактирование веса ребра, при отсутсвиии ребра ничего не проиходит
-    void DFS(int startData, vector<int> &dfs);//обход в глубину, возвращает вектор в которм элементы идут в собраном порядке
-    void BFS(int startData, vector<int>& bfs);//обход в ширину, возвращает вектор в которм элементы идут в собраном порядке
-    void removeNode(int data);//удлаение узла по заданному значению
-    void removeEdge(int startData, int endData);//удаление ребра от заданного узла до заданного узла
-    vector<int> Dijkstra(int startData, int endData);//алгоритм Дейкстры ищущий кратчайший путь от узла к узлу, возвращает вектор который является путем, вектор пуст -> пути нет
+    void addNode(int data);//РґРѕР±Р°РІР»РµРЅРёРµ СѓР·Р»Р° СЃ РЅРѕРІС‹Рј Р·РЅР°С‡РµРЅРёРµРј
+    void addEdge(int fromData, int toData, int weight);//РґРѕР±Р°РІР»РµРЅРёРµ СЂРµР±СЂР° СЃ РІРµСЃРѕРј, РѕС‚ Р·Р°РґР°РЅРЅРѕРіРѕ СѓР·Р»Р° Рє РґСЂСѓРіРѕРјСѓ Р·Р°РґР°РЅРЅРѕРјСѓ СѓР·Р»Сѓ
+    void clearGraph();//РѕС‡РёС‚РєР° РіСЂР°С„Р°
+    void updateEdgeWeight(int startData, int endData, int newWeight);//СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РІРµСЃР° СЂРµР±СЂР°, РїСЂРё РѕС‚СЃСѓС‚СЃРІРёРёРё СЂРµР±СЂР° РЅРёС‡РµРіРѕ РЅРµ РїСЂРѕРёС…РѕРґРёС‚
+    void DFS(int startData, vector<int> &dfs);//РѕР±С…РѕРґ РІ РіР»СѓР±РёРЅСѓ, РІРѕР·РІСЂР°С‰Р°РµС‚ РІРµРєС‚РѕСЂ РІ РєРѕС‚РѕСЂРј СЌР»РµРјРµРЅС‚С‹ РёРґСѓС‚ РІ СЃРѕР±СЂР°РЅРѕРј РїРѕСЂСЏРґРєРµ
+    void BFS(int startData, vector<int>& bfs);//РѕР±С…РѕРґ РІ С€РёСЂРёРЅСѓ, РІРѕР·РІСЂР°С‰Р°РµС‚ РІРµРєС‚РѕСЂ РІ РєРѕС‚РѕСЂРј СЌР»РµРјРµРЅС‚С‹ РёРґСѓС‚ РІ СЃРѕР±СЂР°РЅРѕРј РїРѕСЂСЏРґРєРµ
+    void removeNode(int data);//СѓРґР»Р°РµРЅРёРµ СѓР·Р»Р° РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ Р·РЅР°С‡РµРЅРёСЋ
+    void removeEdge(int startData, int endData);//СѓРґР°Р»РµРЅРёРµ СЂРµР±СЂР° РѕС‚ Р·Р°РґР°РЅРЅРѕРіРѕ СѓР·Р»Р° РґРѕ Р·Р°РґР°РЅРЅРѕРіРѕ СѓР·Р»Р°
+    vector<int> Dijkstra(int startData, int endData);//Р°Р»РіРѕСЂРёС‚Рј Р”РµР№РєСЃС‚СЂС‹ РёС‰СѓС‰РёР№ РєСЂР°С‚С‡Р°Р№С€РёР№ РїСѓС‚СЊ РѕС‚ СѓР·Р»Р° Рє СѓР·Р»Сѓ, РІРѕР·РІСЂР°С‰Р°РµС‚ РІРµРєС‚РѕСЂ РєРѕС‚РѕСЂС‹Р№ СЏРІР»СЏРµС‚СЃСЏ РїСѓС‚РµРј, РІРµРєС‚РѕСЂ РїСѓСЃС‚ -> РїСѓС‚Рё РЅРµС‚
 };
 class QtGraphs : public QMainWindow
 {
@@ -51,10 +51,10 @@ public:
     Graph graph;
 
 protected:
-    void paintEvent(QPaintEvent* event) override;//переопределние отрисовки
-    void mousePressEvent(QMouseEvent* event) override;//переопределние событий мыши для возможности перемещать узлы графа
+    void paintEvent(QPaintEvent* event) override;//РїРµСЂРµРѕРїСЂРµРґРµР»РЅРёРµ РѕС‚СЂРёСЃРѕРІРєРё
+    void mousePressEvent(QMouseEvent* event) override;//РїРµСЂРµРѕРїСЂРµРґРµР»РЅРёРµ СЃРѕР±С‹С‚РёР№ РјС‹С€Рё РґР»СЏ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РїРµСЂРµРјРµС‰Р°С‚СЊ СѓР·Р»С‹ РіСЂР°С„Р°
     void mouseMoveEvent(QMouseEvent* event) override;
-    void mouseReleaseEvent(QMouseEvent* event) override;//переопределние событий мыши для возможности перемещать узлы графа, конец
+    void mouseReleaseEvent(QMouseEvent* event) override;//РїРµСЂРµРѕРїСЂРµРґРµР»РЅРёРµ СЃРѕР±С‹С‚РёР№ РјС‹С€Рё РґР»СЏ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РїРµСЂРµРјРµС‰Р°С‚СЊ СѓР·Р»С‹ РіСЂР°С„Р°, РєРѕРЅРµС†
     
 private:
     Ui::QtGraphsClass ui;
@@ -64,7 +64,7 @@ private:
     bool sel = 0;
     Node* sNode;
 
-    void on_pushButton_clicked();//функции выполняемые при нажатии на соответствующие кнопки, начало
+    void on_pushButton_clicked();//С„СѓРЅРєС†РёРё РІС‹РїРѕР»РЅСЏРµРјС‹Рµ РїСЂРё РЅР°Р¶Р°С‚РёРё РЅР° СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРµ РєРЅРѕРїРєРё, РЅР°С‡Р°Р»Рѕ
     void on_pushButton_2_clicked();
     void on_pushButton_3_clicked();
     void on_pushButton_4_clicked();
@@ -74,5 +74,5 @@ private:
     void on_pushButton_8_clicked();
     void on_pushButton_9_clicked();
     void on_pushButton_10_clicked();
-    void on_pushButton_11_clicked();//функции выполняемые при нажатии на соответствующие кнопки, конец
+    void on_pushButton_11_clicked();//С„СѓРЅРєС†РёРё РІС‹РїРѕР»РЅСЏРµРјС‹Рµ РїСЂРё РЅР°Р¶Р°С‚РёРё РЅР° СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРµ РєРЅРѕРїРєРё, РєРѕРЅРµС†
 };
