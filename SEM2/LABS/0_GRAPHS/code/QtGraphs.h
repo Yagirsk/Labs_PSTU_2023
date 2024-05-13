@@ -41,6 +41,7 @@ public:
     void removeNode(int data);//удлаение узла по заданному значению
     void removeEdge(int startData, int endData);//удаление ребра от заданного узла до заданного узла
     vector<int> Dijkstra(int startData, int endData);//алгоритм Дейкстры ищущий кратчайший путь от узла к узлу, возвращает вектор который является путем, вектор пуст -> пути нет
+    
 };
 class QtGraphs : public QMainWindow
 {
@@ -74,5 +75,6 @@ private:
     void on_pushButton_8_clicked();
     void on_pushButton_9_clicked();
     void on_pushButton_10_clicked();
-    void on_pushButton_11_clicked();//функции выполняемые при нажатии на соответствующие кнопки, конец
+    void on_pushButton_11_clicked();
+    void on_pushButton_12_clicked();//функции выполняемые при нажатии на соответствующие кнопки, конец
 };
