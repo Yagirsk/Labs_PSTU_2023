@@ -34,20 +34,20 @@ void Graph::addEdge(int fromData, int toData, int weight) {
 }
 void Graph::clearGraph()
 {
-    // Удаление всех узлов
+    // РЈРґР°Р»РµРЅРёРµ РІСЃРµС… СѓР·Р»РѕРІ
     for (auto& pair : nodes_map)
     {
         Node* node = pair.second;
         delete node;
     }
 
-    // Очистка хэш-таблицы
+    // РћС‡РёСЃС‚РєР° С…СЌС€-С‚Р°Р±Р»РёС†С‹
     nodes_map.clear();
 }
 
 void Graph::updateEdgeWeight(int startData, int endData, int newWeight) {
     if (nodes_map.find(startData) == nodes_map.end() || nodes_map.find(endData) == nodes_map.end()) {
-        // Один из узлов не существует
+        // РћРґРёРЅ РёР· СѓР·Р»РѕРІ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
         return;
     }
 
@@ -61,7 +61,7 @@ void Graph::updateEdgeWeight(int startData, int endData, int newWeight) {
         }
     }
 
-    // Ребро не найдено
+    // Р РµР±СЂРѕ РЅРµ РЅР°Р№РґРµРЅРѕ
 }
 void Graph::DFS(int startData, vector<int>& dfs)
 {
@@ -124,7 +124,7 @@ void Graph::BFS(int startData, vector<int>& bfs)
         }
     }
 
-    // Проверяем не посещенные узлы и запускаем для них обход в ширину
+    // РџСЂРѕРІРµСЂСЏРµРј РЅРµ РїРѕСЃРµС‰РµРЅРЅС‹Рµ СѓР·Р»С‹ Рё Р·Р°РїСѓСЃРєР°РµРј РґР»СЏ РЅРёС… РѕР±С…РѕРґ РІ С€РёСЂРёРЅСѓ
     for (const auto& pair : nodes_map)
     {
         Node* node = pair.second;
@@ -155,7 +155,7 @@ void Graph::BFS(int startData, vector<int>& bfs)
 }
 void Graph::removeNode(int data)
 {
-    // Удаление всех ребер, ведущих к узлу с заданным значением
+    // РЈРґР°Р»РµРЅРёРµ РІСЃРµС… СЂРµР±РµСЂ, РІРµРґСѓС‰РёС… Рє СѓР·Р»Сѓ СЃ Р·Р°РґР°РЅРЅС‹Рј Р·РЅР°С‡РµРЅРёРµРј
     for (auto& pair : nodes_map)
     {
         Node* node = pair.second;
@@ -175,22 +175,22 @@ void Graph::removeNode(int data)
             if (it != node->edges_to_node.end())
             {
                 node->edges_to_node.erase(it);
-                delete edge; // Освобождение памяти
+                delete edge; // РћСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїР°РјСЏС‚Рё
             }
         }
     }
 
-    // Удаление самого узла из nodes_map
+    // РЈРґР°Р»РµРЅРёРµ СЃР°РјРѕРіРѕ СѓР·Р»Р° РёР· nodes_map
     auto it = nodes_map.find(data);
     if (it != nodes_map.end())
     {
-        delete it->second; // Освобождение памяти
+        delete it->second; // РћСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїР°РјСЏС‚Рё
         nodes_map.erase(it);
     }
 }
 void Graph::removeEdge(int startData, int endData)
 {
-    // Проверка наличия узлов с заданными значениями в графе
+    // РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ СѓР·Р»РѕРІ СЃ Р·Р°РґР°РЅРЅС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё РІ РіСЂР°С„Рµ
     auto startNodeIt = nodes_map.find(startData);
     auto endNodeIt = nodes_map.find(endData);
 
@@ -202,7 +202,7 @@ void Graph::removeEdge(int startData, int endData)
     Node* startNode = startNodeIt->second;
     Node* endNode = endNodeIt->second;
 
-    // Поиск и удаление ребра между узлами
+    // РџРѕРёСЃРє Рё СѓРґР°Р»РµРЅРёРµ СЂРµР±СЂР° РјРµР¶РґСѓ СѓР·Р»Р°РјРё
     Edge* edgeToRemove = nullptr;
 
     for (Edge* edge : startNode->edges_to_node)
@@ -220,7 +220,7 @@ void Graph::removeEdge(int startData, int endData)
         if (it != startNode->edges_to_node.end())
         {
             startNode->edges_to_node.erase(it);
-            delete edgeToRemove; // Освобождение памяти
+            delete edgeToRemove; // РћСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїР°РјСЏС‚Рё
         }
     }
     else
@@ -265,7 +265,7 @@ vector<int> Graph::Dijkstra(int startData, int endData)
         }
     }
 
-    // Восстановление пути
+    // Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РїСѓС‚Рё
     for (int at = endData; at != -1; at = prev[at])
     {
         result.push_back(at);
@@ -282,7 +282,7 @@ QtGraphs::QtGraphs(QWidget* parent)
 
     /*QString imagePath = "og_og_145233582124948366.jpg";
     //QString imagePath = "C:/Users/bushm/Desktop/class/QtGraphs/QtGraphs/og_og_145233582124948366.jpg";
-    // Создаем кнопку
+    // РЎРѕР·РґР°РµРј РєРЅРѕРїРєСѓ
     QPushButton* button = ui.pushButton_6;
 
     button->setStyleSheet("QPushButton {"
@@ -349,7 +349,7 @@ void QtGraphs::paintEvent(QPaintEvent* event) {
 void QtGraphs::mousePressEvent(QMouseEvent* event)
 {
     if (event->button() == Qt::LeftButton) {
-        m_nodeSelected = false; // Сброс флага выбранного узла
+        m_nodeSelected = false; // РЎР±СЂРѕСЃ С„Р»Р°РіР° РІС‹Р±СЂР°РЅРЅРѕРіРѕ СѓР·Р»Р°
         for (const auto& pair : graph.nodes_map) {
             Node* node = pair.second;
             if ((event->pos() - node->pos).manhattanLength() < 30) {
