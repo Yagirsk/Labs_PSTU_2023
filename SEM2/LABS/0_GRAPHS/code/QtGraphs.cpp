@@ -10,6 +10,7 @@
 #include <QTimer>
 #include <queue>
 #include <limits>
+#include <iostream>
 const double M_PI = 3.1415;
 void Graph::addNode(int data) {
     if (nodes_map.find(data) == nodes_map.end()) {
@@ -280,14 +281,7 @@ QtGraphs::QtGraphs(QWidget* parent)
 {
     ui.setupUi(this);
 
-    /*QString imagePath = "og_og_145233582124948366.jpg";
-    //QString imagePath = "C:/Users/bushm/Desktop/class/QtGraphs/QtGraphs/og_og_145233582124948366.jpg";
-    // Создаем кнопку
-    QPushButton* button = ui.pushButton_6;
-
-    button->setStyleSheet("QPushButton {"
-        "border-image: url(\"" + imagePath + "\");"
-        "}");*/
+    //подключение кнопок
     connect(ui.pushButton, &QPushButton::clicked, this, &QtGraphs::on_pushButton_clicked);
     connect(ui.pushButton_2, &QPushButton::clicked, this, &QtGraphs::on_pushButton_2_clicked);
     connect(ui.pushButton_4, &QPushButton::clicked, this, &QtGraphs::on_pushButton_3_clicked);
@@ -299,10 +293,36 @@ QtGraphs::QtGraphs(QWidget* parent)
     connect(ui.pushButton_9, &QPushButton::clicked, this, &QtGraphs::on_pushButton_9_clicked);
     connect(ui.pushButton_10, &QPushButton::clicked, this, &QtGraphs::on_pushButton_10_clicked);
     connect(ui.pushButton_11, &QPushButton::clicked, this, &QtGraphs::on_pushButton_11_clicked);
+    connect(ui.pushButton_12, &QPushButton::clicked, this, &QtGraphs::on_pushButton_12_clicked);
 }
 QtGraphs::~QtGraphs()
 {
 }
+void printAdjacencyMatrix(const Graph& graph) {
+    // Подсчитываем количество вершин
+    int numVertices = graph.nodes_map.size();
+
+    // Создаем статический двумерный массив для матрицы смежности и заполняем его нулями
+    int adjacencyMatrix[100][100] = { 0 }; // Предполагаем, что граф не будет содержать более 100 вершин
+
+    // Заполняем матрицу смежности
+    for (const auto& pair : graph.nodes_map) {
+        Node* node = pair.second;
+        for (Edge* edge : node->edges_to_node) {
+            adjacencyMatrix[node->data-1][edge->to->data-1] = edge->weight;
+        }
+    }
+
+    // Выводим матрицу смежности
+    std::cout << "Adjacency Matrix:" << std::endl;
+    for (int i = 0; i < numVertices; i++) {
+        for (int j = 0; j < numVertices; j++) {
+            std::cout << adjacencyMatrix[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
 void QtGraphs::paintEvent(QPaintEvent* event) {
     QPainter painter(this);
     QFont font = painter.font();
@@ -623,4 +643,8 @@ void QtGraphs::on_pushButton_11_clicked()
 {
     graph.clearGraph();
     update();
+}
+void QtGraphs::on_pushButton_12_clicked()
+{
+    printAdjacencyMatrix(graph);
 }
