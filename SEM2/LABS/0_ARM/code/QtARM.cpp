@@ -1,4 +1,4 @@
-﻿//♣↓
+
 #include "QtARM.h"
 #include <cstdlib>
 #include <ctime>
@@ -107,6 +107,7 @@ void human::new_human()
                 new_name = names[a];
             } while (new_name == name);
             name2 = new_name;
+            do_waht = 1;
             break;
         }
         case 1:
@@ -117,6 +118,7 @@ void human::new_human()
                 new_surname = surnames[a];
             } while (new_surname == surname);
             surname2 = new_surname;
+            do_waht = 1;
             break;
         }
         case 2:
@@ -127,6 +129,7 @@ void human::new_human()
                 new_patronymic = patronymics[a];
             } while (new_patronymic == patronymic);
             patronymic2 = new_patronymic;
+            do_waht = 1;
             break;
         }
         case 3:
@@ -136,6 +139,7 @@ void human::new_human()
                 new_num = num_bukv[abs(rand() % 7)] + to_string(abs(rand() % 1000)) + num_bukv[abs(rand() % 7)] + num_bukv[abs(rand() % 7)];
             } while (new_num == vec_num);
             vec_num2 = new_num;
+            do_waht = 1;
             break;
         }
         case 4:
@@ -149,6 +153,7 @@ void human::new_human()
                 }
             } while (new_pas_num == pas_num);
             pas_num2 = new_pas_num;
+            do_waht = 1;
             break;
         }
         case 5:
@@ -169,7 +174,7 @@ void human::new_human()
 
                     newCargo.cn = cargo[cargo_type];
                     newCargo.sht = 1 + abs(rand() % 5);
-
+                    do_waht = 1;
                     new_cargos.push_back(newCargo);
                 }
 
@@ -180,21 +185,23 @@ void human::new_human()
         default:
             break;
         }
-        do_waht = 1;
+        
     }
 
-    if (abs(rand() % 5) == 0)
+    if (abs(rand() % 5) >=1)
     {
         int ttt = (abs(rand() % 2));
         if (ttt == 0)
         {
             vec_cantroband = 1;
+            do_waht = 2;
         }
         else if (ttt == 1 and truck)
         {
             cargo_contraband = 1;
+            do_waht = 2;
         }
-        do_waht = 2;
+        
     }
 }
 void human::clear()
@@ -235,7 +242,6 @@ QtARM::QtARM(QWidget *parent)
     connect(ui.go_to, &QPushButton::clicked, this, &QtARM::on_pushButton_5_clicked);
     connect(ui.razvorot, &QPushButton::clicked, this, &QtARM::on_pushButton_6_clicked);
 }
-
 QtARM::~QtARM()
 {
 }
