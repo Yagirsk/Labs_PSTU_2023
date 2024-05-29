@@ -1,1 +1,1 @@
-
+In the event of an apocalypse, you should consider taking me into the bunker for several reasons. My pragmatic nature allows me to assess situations rationally and make logical decisions under pressure. I possess a calm and collected demeanor, which enables me to remain level-headed in crisis situations. My ability to think critically and act decisively makes me a valuable asset in times of chaos. By having me in the bunker, you can rely on my practical skills and resourcefulness to help navigate the challenges that may arise.
